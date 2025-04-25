@@ -1,0 +1,7 @@
+select E.LAST_NAME, D.DEPARTMENT_ID , D.DEPARTMENT_NAME
+from employees E, DEPARTMENTS D;
+
+
+
+
+

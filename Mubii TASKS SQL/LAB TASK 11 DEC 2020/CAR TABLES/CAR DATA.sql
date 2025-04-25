@@ -1,0 +1,12 @@
+insert all
+into car (CAR_REG_NO, BRAND ,MODEL ,VARIANT ,MODEL_YEAR ,COLOR, YEAR_OF_PURCHASE,KILOMETERS)
+ values('H-1234', 'Toyota', 'Corolla', 'Sedan', 2019, 'Black',2020, 1200)
+into car (CAR_REG_NO, BRAND ,MODEL ,VARIANT ,MODEL_YEAR ,COLOR, YEAR_OF_PURCHASE,KILOMETERS)
+ values('V-9845', 'Honda', 'Civic', 'Sedan', 2017, 'White',2018, 10200)
+into car (CAR_REG_NO, BRAND ,MODEL ,VARIANT ,MODEL_YEAR ,COLOR,YEAR_OF_PURCHASE, KILOMETERS) 
+values('V-7864', 'Audi', 'A5', 'Sedan', 2019, 'Black',2019, 0)
+into car (CAR_REG_NO, BRAND ,MODEL ,VARIANT ,MODEL_YEAR ,COLOR,YEAR_OF_PURCHASE, KILOMETERS) values('M-1098', 'Ford', 'Mustang', 'Muscle', 2019, 'Gray',2020, 1500)
+into car (CAR_REG_NO, BRAND ,MODEL ,VARIANT ,MODEL_YEAR ,COLOR,YEAR_OF_PURCHASE, KILOMETERS) values('H-1289', 'BMW', 'BMW i8', 'Sports', 2020, 'Red',2020, 12000) 
+select * from dual;
+
+

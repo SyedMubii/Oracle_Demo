@@ -1,0 +1,53 @@
+DATE:-01-02-21 
+LAB:-TASKS ORACLE SQL/PLSQL,  ORACLE NAVTTC IMCS UNIVERSITY OF SINDH
+NAME: SAMAD.
+
+1.
+SET SERVEROUTPUT ON;
+DECLARE
+EMP EMPLOYEES%ROWTYPE;
+CURSOR SEARCHING IS 
+SELECT *
+FROM EMPLOYEES
+WHERE FIRST_NAME LIKE '%&VALUE%';
+BEGIN
+OPEN SEARCHING;
+LOOP
+FETCH SEARCHING INTO EMP;
+DBMS_OUTPUT.PUT_LINE(EMP.FIRST_NAME || ' ' || EMP.LAST_NAME);
+EXIT WHEN SEARCHING%NOTFOUND;
+END LOOP;
+CLOSE SEARCHING;
+END;
+
+
+2.
+SET SERVEROUTPUT ON;
+declare
+pay employees.salary%type;
+cursor payment is
+SELECT E.SALARY 
+FROM EMPLOYEES E, DEPARTMENTS D
+WHERE E.MANAGER_ID IS NOT NULL
+OR D.DEPARTMENT_NAME IN ('Human Resources','IT');
+begin
+open payment;
+loop
+fetch payment into pay;
+dbms_output.put_line(pay);
+exit when payment%notfound;
+end loop;
+close payment;
+end;
+/
+
+
+
+
+set serveroutput on 
+declare 
+ED employees
+
+
+
+

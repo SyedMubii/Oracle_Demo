@@ -1,0 +1,196 @@
+create table car
+(
+Car_Reg_No number(20) not null primary key,
+Brand varchar(20) not null,
+Model number(10) not null,
+Variant varchar(10) not null,
+Model_Year number(8) not null,
+Color varchar(12) not null,
+Year_Of_Purchase number(4) not null,
+Distance_Traveled number(20) not null 
+);
+
+create table Owner
+(
+Owner_Id number(10) not null,
+Owner_Name varchar(20) not null,
+Owner_Phone number(25) not null,
+License_Number number(25) not null 
+);
+
+create table Owner_Car
+(
+Owner_Id number(10) not null,
+Car_Reg_No number(20) not null,
+Price number(10) not null
+);
+
+create table Branch
+(
+Branch_Name varchar(25) not null,
+Branch_City varchar(25) not null,
+Assets number(20) not null
+);
+
+create table Customer
+(
+Customer_Name varchar(20) not null,
+Customer_Street varchar(20) not null,
+Customer_City varchar(20) not null
+);
+
+create table Account
+(
+Account_Number number(20) not null,
+Branch_Name varchar(20) not null,
+Balance number(30) not null
+);
+
+create table Loan
+(
+Loan_Number number(20) not null,
+Branch_Name varchar(20) not null,
+Amount number(30) not null
+);
+
+create table Depositor
+(
+Customer_Name varchar(20) not null,
+Account_Number number(20) not null
+);
+
+create table Borrower
+(
+Customer_Name varchar(20) not null,
+Loan_Number number(20) not null
+);
+
+create table Employee
+(
+Employee_Name varchar(20) not null,
+Branch_Name varchar(20) not null,
+Salary number(10) not null
+);
+
+Create table Students
+(
+Student_Id number(10) not null,
+First_Name varchar(10) not null,
+Last_Name varchar(10) not null,
+Age number(3) not null,
+Gender varchar(8) not null,
+Address varchar(30) not null,
+Course varchar(10) not null,
+Grade varchar(5) not null,
+Fee_Paid number(10) not null
+);
+
+insert all
+into Car values(1001,'Toyota','Corolla','Sedan',1998,'Black',2011,30000)
+into Car values(2191,'Toyota','LC','SUV',2018,'Black',2020,10)
+into Car values(3098,'Suzuki','Mehran','Sedan',1997,'Golden',2000,100000)
+into Car values(4090,'Toyota','Altas','Sedan',2012,'Black',2013,100000)
+into Car values(4198,'Honda','Civic','Sedan',2018,'Black',2020,1000)
+select * from dual;
+
+insert all 
+into Owner values(420,'Dayan',09007801,01111000)
+into Owner values(320,'Akash',030089591,11215069)
+into Owner values(401,'Saad',031289591,35216769)
+into Owner values(540,'Saba',033289591,814255669)
+into Owner values(102,'Muneer',033489591,84356379)
+select * from dual;
+
+insert all 
+into Owner_Car values(420,1001,100000)
+into Owner_Car values(320,2194,20000)
+into Owner_Car values(401,3098,200000)
+into Owner_Car values(540,4090,200000)
+into Owner_Car values(102,4198,6000000)
+select * from dual;
+
+
+select oc.owner_id,o.owner_id
+from Owner o join Owner_Car  oc
+on o.owner_id = oc.owner_id
+
+alter table Owner
+add (Owner_Address varchar(30));
+alter table Owner
+add (Test_Status varchar(10));
+alter table Car
+drop column Year_Of_Purchase;
+alter table Owner
+drop column Owner_Address;
+alter table Owner_Car
+add  (Years_Used number(10));
+drop table Owner_Car;
+alter table Owner
+modify (License_Number Number(20));
+
+
+insert all
+into Branch values('Society','Jamshoro',32)
+into Branch values('University','Jamshoro',40)
+select * from dual;
+
+insert all
+into Customer values('Akash','123 abc','Hyderabd')
+into Customer values('Hasnain','987 xyz','Jamshoro')
+select * from dual;
+
+insert all
+into Account values(1264907932,'Society',100)
+into Account values(1354654684,'Hyderabad',2000)
+select * from dual;
+
+insert all
+into Loan values(1012,'Society',100000)
+into Loan values(2012,'Hyderabad',2000000)
+select * from dual;
+
+insert all
+into Depositor values('Akash',1264907932)
+into Depositor values('Hasnain',1354654684)
+select * from dual;
+
+insert all
+into Borrower values('Akash',1012)
+into Borrower values('Hasnain',2012)
+select * from dual;
+
+insert all
+into Employee values('SirImran','Society',1000000)
+into Employee values('Fariya','University',50000)
+select * from dual;
+
+select customer_name
+from depositor;
+
+select branch_name 
+from loan;
+
+select * from Branch;
+
+select account_number 
+from account
+where balance > 700;
+
+select account_number 
+from account
+where balance > 800
+and branch_name = 'Hyderabad';
+
+select * from Branch;
+rename Assets to Assets_In_Tens;
+
+select branch_name
+from branch
+where assets between 1 and 4000000
+
+select c.customer_name,a.account_number,a.balance
+from customer c,account a
+
+select c.customer_name,a.account_number,a.balance
+from customer c,account a
+where balance  between 0 and 400

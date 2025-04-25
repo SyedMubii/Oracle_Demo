@@ -1,0 +1,6 @@
+select e.last_name, e.job_id, d.department_name
+from employees e join departments d
+on e.DEPARTMENT_ID = d.DEPARTMENT_ID
+join locations l
+on l.location_id=d.location_id
+having l.location_id= &location_id;

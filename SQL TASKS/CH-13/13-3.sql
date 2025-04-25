@@ -1,0 +1,1 @@
+you can or anyone have give those privileges to user by using GRANT Command

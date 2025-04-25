@@ -1,0 +1,74 @@
+Task-1 :set serveroutput on
+declare
+a number;
+begin
+a:=&a;
+if a=100 then
+DBMS_output.put_line('Equal');
+else
+DBMS_output.put_line('Not Equal');
+end if;
+end;
+
+Task-2 :set serveroutput on
+declare
+a number;
+begin
+a:=&a;
+if mod(a,2)=0 then
+DBMS_output.put_line('Number is Even');
+else
+DBMS_output.put_line('Number is Odd');
+end if;
+end;
+
+Task-3 :set serveroutput on
+declare
+emp number;
+begin
+select employee_id
+into emp
+from employees
+where employee_id = &Id;
+if emp=101 then
+DBMS_output.put_line('You''r Id is Correct');
+else
+DBMS_output.put_line('You''r Id is Wrong');
+end if;
+end;
+
+Task-4 :set serveroutput on
+declare
+a number;
+begin
+a:=&a;
+if mod(a,2)=0 then
+DBMS_output.put_line('Y');
+else
+DBMS_output.put_line('N');
+end if;
+end;
+
+Task-5 :
+
+Task-6 :
+set serveroutput on
+declare
+l_name string(30);
+f_name string(20);
+j_id string(30);
+sal number(20);
+d_name string(30);
+begin
+select e.last_name, e.first_name, e.job_id, e.salary, d.Department_name
+into l_name,f_name,j_id,sal,d_name
+from employees e join departments d
+on e.department_id=d.department_id
+where last_name='&l_name';
+DBMS_output.put_line('Input : '||l_name);
+DBMS_output.put_line('First Name is: '||f_name);
+DBMS_output.put_line('Last Name is : '||l_name);
+DBMS_output.put_line('Salary = '||sal);
+DBMS_output.put_line('Job Id is ; '||j_id);
+DBMS_output.put_line('Department Name = '||d_name);
+end;

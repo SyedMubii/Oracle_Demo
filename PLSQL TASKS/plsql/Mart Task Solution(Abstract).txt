@@ -1,0 +1,237 @@
+------------Marts------------
+create table Marts(
+mart_id number(20) primary key,
+mart_name varchar2(30),
+address varchar2(30)
+);
+
+alter table marts
+add constraint mart_name_uk unique(mart_name);
+
+insert all
+into Marts values(1,'Ali Mart','Qasimabad,Hyderabad')
+into Marts values(2,'Grocers Mart','City,Hyderabad')
+into Marts values(3,'Dawood Mart','Latifabad,Hyderabad')
+into Marts values(4,'Abdullah Mart','Qasimabad,Hyderabad')
+into Marts values(5,'Max Bachat Mart','City,Hyderabad')
+select * from dual;
+
+----------vendors------------
+create table Vendors(
+vendor_id number(3) primary key,
+vendor_name varchar2(20),
+mart_id number(3),
+mart_name varchar2(30),
+retail_price number(20),
+delivery_date date,
+total_stock_shipped number(20),
+sales_price number(20)
+);
+
+
+insert all
+into vendors values(1,'Salim',1,'Ali Mart',200000,'10-JAN-2020',1200,220000)
+into vendors values(2,'Sahil',2,'Grocers Mart',200000,'10-JAN-2020',1200,240000)
+into vendors values(3,'Raheel',3,'Dawood Mart',200000,'10-JAN-2020',1200,224500)
+into vendors values(4,'Imran',4,'Abdullah Mart',200000,'10-JAN-2020',1200,210000)
+into vendors values(5,'Akash',5,'Max Bachat Mart',600000,'19-AUG-2021',1800,640000)
+select * from dual
+
+
+alter table Vendors
+add constraint v_mart_id_fk foreign key (mart_id) references Marts(mart_id);
+
+alter table Vendors
+add constraint v_mart_name_fk foreign key (mart_name) references Marts(mart_name);
+
+
+
+----------products-------------
+
+create table Products(
+Serial_Number number(10),
+product_name varchar2(20),
+product_id number(20),
+price number(5),
+remaing_stock number(25),
+category varchar2(25),
+quainty_sale number(25),
+mart_id number(20),
+mart_name varchar2(30),
+vendor_id number(3)
+);
+
+
+
+
+insert all
+into Products values(product_serial_no_sep.NEXTVAL,'Life Boy',1,60,100,'House Hold',200,1,'Ali Mart',1)
+into Products values(product_serial_no_sep.NEXTVAL,'Sunsilk',2,160,110,'House Hold',100,1,'Ali Mart',1)
+into Products values(product_serial_no_sep.NEXTVAL,'Dairy Milk',3,10,100,'confectionery',500,1,'Ali Mart',1)
+into Products values(product_serial_no_sep.NEXTVAL,'Lays',4,50,60,'confectionery',220,1,'Ali Mart',1)
+into Products values(product_serial_no_sep.NEXTVAL,'Lux',5,60,100,'House Hold',80,1,'Ali Mart',1)
+into Products values(product_serial_no_sep.NEXTVAL,'Pepsi',6,50,10,'beverages',680,1,'Ali Mart',1)
+into Products values(product_serial_no_sep.NEXTVAL,'7up',7,50,100,'beverages',200,1,'Ali Mart',1)
+into Products values(product_serial_no_sep.NEXTVAL,'Jam',8,160,700,'confectionery',290,1,'Ali Mart',1)
+into Products values(product_serial_no_sep.NEXTVAL,'Lemon max',9,60,50,'House Hold',206,1,'Ali Mart',1)
+into Products values(product_serial_no_sep.NEXTVAL,'Magnum',10,20,100,'confectionery',130,1,'Ali Mart',1)
+into Products values(product_serial_no_sep.NEXTVAL,'Mangos',11,180,10,'Fruits',10,1,'Ali Mart',1)
+into Products values(product_serial_no_sep.NEXTVAL,'Ponds',12,180,1,'Comsmetics',20,1,'Ali Mart',1)
+into Products values(product_serial_no_sep.NEXTVAL,'Rooafza',13,260,190,'beverages',270,1,'Ali Mart',1)
+into Products values(product_serial_no_sep.NEXTVAL,'Cloud 9',14,10,140,'confectionery',240,1,'Ali Mart',1)
+into Products values(product_serial_no_sep.NEXTVAL,'Black Spice',15,90,80,'House Hold',20,1,'Ali Mart',1)
+into Products values(product_serial_no_sep.NEXTVAL,'Green spice',16,90,80,'House Hold',40,1,'Ali Mart',1)
+into Products values(product_serial_no_sep.NEXTVAL,'Red spice',17,90,80,'House Hold',60,1,'Ali Mart',1)
+into Products values(product_serial_no_sep.NEXTVAL,'flour',18,320,10,'House Hold',310,1,'Ali Mart',1)
+into Products values(product_serial_no_sep.NEXTVAL,'Corn flour',19,90,80,'House Hold',80,1,'Ali Mart',1)
+into Products values(product_serial_no_sep.NEXTVAL,'Wall Nut',20,560,560,'Dry Fruit',2000,1,'Ali Mart',1)
+into Products values(product_serial_no_sep.NEXTVAL,'Life Boy',1,60,100,'House Hold',200,2,'Grocers Mart',2)
+into Products values(product_serial_no_sep.NEXTVAL,'Sunsilk',2,160,110,'House Hold',100,2,'Grocers Mart',2)
+into Products values(product_serial_no_sep.NEXTVAL,'Dairy Milk',3,10,100,'confectionery',500,2,'Grocers Mart',2)
+into Products values(product_serial_no_sep.NEXTVAL,'Lays',4,50,60,'confectionery',220,2,'Grocers Mart',2)
+into Products values(product_serial_no_sep.NEXTVAL,'Lux',5,60,100,'House Hold',80,2,'Grocers Mart',2)
+into Products values(product_serial_no_sep.NEXTVAL,'Pepsi',6,50,10,'beverages',680,2,'Grocers Mart',2)
+into Products values(product_serial_no_sep.NEXTVAL,'7up',7,50,100,'beverages',200,2,'Grocers Mart',2)
+into Products values(product_serial_no_sep.NEXTVAL,'Jam',8,160,700,'confectionery',290,2,'Grocers Mart',2)
+into Products values(product_serial_no_sep.NEXTVAL,'Lemon max',9,60,50,'House Hold',206,2,'Grocers Mart',2)
+into Products values(product_serial_no_sep.NEXTVAL,'Magnum',10,20,100,'confectionery',130,2,'Grocers Mart',2)
+into Products values(product_serial_no_sep.NEXTVAL,'Mangos',11,180,10,'Fruits',10,2,'Grocers Mart',2)
+into Products values(product_serial_no_sep.NEXTVAL,'Ponds',12,180,1,'Comsmetics',20,2,'Grocers Mart',2)
+into Products values(product_serial_no_sep.NEXTVAL,'Rooafza',13,260,190,'beverages',270,2,'Grocers Mart',2)
+into Products values(product_serial_no_sep.NEXTVAL,'Cloud 9',14,10,140,'confectionery',240,2,'Grocers Mart',2)
+into Products values(product_serial_no_sep.NEXTVAL,'Black Spice',15,90,80,'House Hold',20,2,'Grocers Mart',2)
+into Products values(product_serial_no_sep.NEXTVAL,'Green spice',16,90,80,'House Hold',40,2,'Grocers Mart',2)
+into Products values(product_serial_no_sep.NEXTVAL,'Red spice',17,90,80,'House Hold',60,2,'Grocers Mart',2)
+into Products values(product_serial_no_sep.NEXTVAL,'flour',18,320,10,'House Hold',310,2,'Grocers Mart',2)
+into Products values(product_serial_no_sep.NEXTVAL,'Corn flour',19,90,80,'House Hold',80,2,'Grocers Mart',2)
+into Products values(product_serial_no_sep.NEXTVAL,'Wall Nut',20,560,560,'Dry Fruit',2000,2,'Grocers Mart',2)
+into Products values(product_serial_no_sep.NEXTVAL,'Life Boy',1,60,100,'House Hold',200,3,'Dawood Mart',3)
+into Products values(product_serial_no_sep.NEXTVAL,'Sunsilk',2,160,110,'House Hold',100,3,'Dawood Mart',3)
+into Products values(product_serial_no_sep.NEXTVAL,'Dairy Milk',3,10,100,'confectionery',500,3,'Dawood Mart',3)
+into Products values(product_serial_no_sep.NEXTVAL,'Lays',4,50,60,'confectionery',220,3,'Dawood Mart',3)
+into Products values(product_serial_no_sep.NEXTVAL,'Lux',5,60,100,'House Hold',80,3,'Dawood Mart',3)
+into Products values(product_serial_no_sep.NEXTVAL,'Pepsi',6,50,10,'beverages',680,3,'Dawood Mart',3)
+into Products values(product_serial_no_sep.NEXTVAL,'7up',7,50,100,'beverages',200,3,'Dawood Mart',3)
+into Products values(product_serial_no_sep.NEXTVAL,'Jam',8,160,700,'confectionery',290,3,'Dawood Mart',3)
+into Products values(product_serial_no_sep.NEXTVAL,'Lemon max',9,60,50,'House Hold',206,3,'Dawood Mart',3)
+into Products values(product_serial_no_sep.NEXTVAL,'Magnum',10,20,100,'confectionery',130,3,'Dawood Mart',3)
+into Products values(product_serial_no_sep.NEXTVAL,'Mangos',11,180,10,'Fruits',10,3,'Dawood Mart',3)
+into Products values(product_serial_no_sep.NEXTVAL,'Ponds',12,180,1,'Comsmetics',20,3,'Dawood Mart',3)
+into Products values(product_serial_no_sep.NEXTVAL,'Rooafza',13,260,190,'beverages',270,3,'Dawood Mart',3)
+into Products values(product_serial_no_sep.NEXTVAL,'Cloud 9',14,10,140,'confectionery',240,3,'Dawood Mart',3)
+into Products values(product_serial_no_sep.NEXTVAL,'Black Spice',15,90,80,'House Hold',20,3,'Dawood Mart',3)
+into Products values(product_serial_no_sep.NEXTVAL,'Green spice',16,90,80,'House Hold',40,3,'Dawood Mart',3)
+into Products values(product_serial_no_sep.NEXTVAL,'Red spice',17,90,80,'House Hold',60,3,'Dawood Mart',3)
+into Products values(product_serial_no_sep.NEXTVAL,'flour',18,320,10,'House Hold',310,3,'Dawood Mart',3)
+into Products values(product_serial_no_sep.NEXTVAL,'Corn flour',19,90,80,'House Hold',80,3,'Dawood Mart',3)
+into Products values(product_serial_no_sep.NEXTVAL,'Wall Nut',20,560,560,'Dry Fruit',2000,3,'Dawood Mart',3)
+into Products values(product_serial_no_sep.NEXTVAL,'Life Boy',1,60,100,'House Hold',200,4,'Abdullah Mart',4)
+into Products values(product_serial_no_sep.NEXTVAL,'Sunsilk',2,160,110,'House Hold',100,4,'Abdullah Mart',4)
+into Products values(product_serial_no_sep.NEXTVAL,'Dairy Milk',3,10,100,'confectionery',500,4,'Abdullah Mart',4)
+into Products values(product_serial_no_sep.NEXTVAL,'Lays',4,50,60,'confectionery',220,4,'Abdullah Mart',4)
+into Products values(product_serial_no_sep.NEXTVAL,'Lux',5,60,100,'House Hold',80,4,'Abdullah Mart',4)
+into Products values(product_serial_no_sep.NEXTVAL,'Pepsi',6,50,10,'beverages',680,4,'Abdullah Mart',4)
+into Products values(product_serial_no_sep.NEXTVAL,'7up',7,50,100,'beverages',200,4,'Abdullah Mart',4)
+into Products values(product_serial_no_sep.NEXTVAL,'Jam',8,160,700,'confectionery',290,4,'Abdullah Mart',4)
+into Products values(product_serial_no_sep.NEXTVAL,'Lemon max',9,60,50,'House Hold',206,4,'Abdullah Mart',4)
+into Products values(product_serial_no_sep.NEXTVAL,'Magnum',10,20,100,'confectionery',130,4,'Abdullah Mart',4)
+into Products values(product_serial_no_sep.NEXTVAL,'Mangos',11,180,10,'Fruits',10,4,'Abdullah Mart',4)
+into Products values(product_serial_no_sep.NEXTVAL,'Ponds',12,180,1,'Comsmetics',20,4,'Abdullah Mart',4)
+into Products values(product_serial_no_sep.NEXTVAL,'Rooafza',13,260,190,'beverages',270,4,'Abdullah Mart',4)
+into Products values(product_serial_no_sep.NEXTVAL,'Cloud 9',14,10,140,'confectionery',240,4,'Abdullah Mart',4)
+into Products values(product_serial_no_sep.NEXTVAL,'Black Spice',15,90,80,'House Hold',20,4,'Abdullah Mart',4)
+into Products values(product_serial_no_sep.NEXTVAL,'Green spice',16,90,80,'House Hold',40,4,'Abdullah Mart',4)
+into Products values(product_serial_no_sep.NEXTVAL,'Red spice',17,90,80,'House Hold',60,4,'Abdullah Mart',4)
+into Products values(product_serial_no_sep.NEXTVAL,'flour',18,320,10,'House Hold',310,4,'Abdullah Mart',4)
+into Products values(product_serial_no_sep.NEXTVAL,'Corn flour',19,90,80,'House Hold',80,4,'Abdullah Mart',4)
+into Products values(product_serial_no_sep.NEXTVAL,'Wall Nut',20,560,560,'Dry Fruit',2000,4,'Abdullah Mart',4)
+into Products values(product_serial_no_sep.NEXTVAL,'Life Boy',1,60,100,'House Hold',200,5,'Max Bachat Mart',5)
+into Products values(product_serial_no_sep.NEXTVAL,'Sunsilk',2,160,110,'House Hold',100,5,'Max Bachat Mart',5)
+into Products values(product_serial_no_sep.NEXTVAL,'Dairy Milk',3,10,100,'confectionery',500,5,'Max Bachat Mart',5)
+into Products values(product_serial_no_sep.NEXTVAL,'Lays',4,50,60,'confectionery',220,5,'Max Bachat Mart',5)
+into Products values(product_serial_no_sep.NEXTVAL,'Lux',5,60,100,'House Hold',80,5,'Max Bachat Mart',5)
+into Products values(product_serial_no_sep.NEXTVAL,'Pepsi',6,50,10,'beverages',680,5,'Max Bachat Mart',5)
+into Products values(product_serial_no_sep.NEXTVAL,'7up',7,50,100,'beverages',200,5,'Max Bachat Mart',5)
+into Products values(product_serial_no_sep.NEXTVAL,'Jam',8,160,700,'confectionery',290,5,'Max Bachat Mart',5)
+into Products values(product_serial_no_sep.NEXTVAL,'Lemon max',9,60,50,'House Hold',206,5,'Max Bachat Mart',5)
+into Products values(product_serial_no_sep.NEXTVAL,'Magnum',10,20,100,'confectionery',130,5,'Max Bachat Mart',5)
+into Products values(product_serial_no_sep.NEXTVAL,'Mangos',11,180,10,'Fruits',10,5,'Max Bachat Mart',5)
+into Products values(product_serial_no_sep.NEXTVAL,'Ponds',12,180,1,'Comsmetics',20,5,'Max Bachat Mart',5)
+into Products values(product_serial_no_sep.NEXTVAL,'Rooafza',13,260,190,'beverages',270,5,'Max Bachat Mart',5)
+into Products values(product_serial_no_sep.NEXTVAL,'Cloud 9',14,10,140,'confectionery',240,5,'Max Bachat Mart',5)
+into Products values(product_serial_no_sep.NEXTVAL,'Black Spice',15,90,80,'House Hold',20,5,'Max Bachat Mart',5)
+into Products values(product_serial_no_sep.NEXTVAL,'Green spice',16,90,80,'House Hold',40,5,'Max Bachat Mart',5)
+into Products values(product_serial_no_sep.NEXTVAL,'Red spice',17,90,80,'House Hold',60,5,'Max Bachat Mart',5)
+into Products values(product_serial_no_sep.NEXTVAL,'flour',18,320,10,'House Hold',310,5,'Max Bachat Mart',5)
+into Products values(product_serial_no_sep.NEXTVAL,'Corn flour',19,90,80,'House Hold',80,5,'Max Bachat Mart',5)
+into Products values(product_serial_no_sep.NEXTVAL,'Wall Nut',20,560,560,'Dry Fruit',2000,5,'Max Bachat Mart',5)
+select * from dual;
+
+
+
+create sequence product_serial_no_sep
+increment by 1
+start with 1
+maxvalue 200
+nocache
+nocycle;
+
+
+alter table Products
+add foreign key (mart_id) references Marts(mart_id);
+
+alter table Products
+add foreign key (mart_name) references Marts(mart_name);
+
+alter table Products
+add foreign key (vendor_id) references Vendors(vendor_id);
+
+
+---------SQL--------------------
+
+select distinct v.vendor_name as "Sales-Man",m.mart_name,v.delivery_date,p.price,v.sales_price,p.quainty_sale as "Top Products", sum(p.quainty_sale)*0.2 as "Commission_Of_Seller"
+from marts m join vendors v
+on m.mart_id = v.mart_id
+join products p
+on p.vendor_id = v.vendor_id
+where m.mart_name = '&Mart_Name'
+and ROWNUM <= 5
+group by v.vendor_name,v.delivery_date,p.price,v.sales_price, m.mart_name,p.quainty_sale
+order by p.quainty_sale desc;
+
+------------pl/sql-----------------------
+
+set SERVEROUTPUT ON
+create or replace procedure mart is
+cursor c_mart
+is
+select distinct v.vendor_name,m.mart_name,v.delivery_date,p.price,v.sales_price,p.quainty_sale, sum(p.quainty_sale)*0.2 as "Commission_Of_Seller"
+from marts m join vendors v
+on m.mart_id = v.mart_id
+join products p
+on p.vendor_id = v.vendor_id
+where m.mart_name = '&Mart_Name'
+and ROWNUM <= 5
+group by v.vendor_name,v.delivery_date,p.price,v.sales_price, m.mart_name,p.quainty_sale
+order by p.quainty_sale desc;
+m_data c_mart%rowtype;
+begin
+open c_mart;
+loop
+fetch c_mart into m_data;
+exit when c_mart%notfound;
+dbms_output.put_line('Sales-Man : '||m_data.vendor_name||'   Mart Name : '||m_data.mart_name||' Delivrey Date : '||m_data.delivery_date||' Price : '||m_data.price||' Sales Price : '||m_data.sales_price||' Top Products : '||m_data.quainty_sale||' Commision Of Seller : '||m_data.quainty_sale*0.2);
+end loop;
+close c_mart;
+end;
+/
+
+------Caling------------------
+set serveroutput on
+declare
+begin
+mart();
+end;
+/
+
+

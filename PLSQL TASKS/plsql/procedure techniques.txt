@@ -1,0 +1,63 @@
+set serveroutput on;
+create or replace procedure searchingName 
+is
+emp_data employees%rowtype;
+cursor mining_data is 
+select *
+from employees
+where first_name like '%&value%';
+begin 
+open mining_data;
+fetch mining_data into emp_data;
+dbms_outpout.put_line('employee_Name:' || emp_data.first_name||' '
+||emp_data.last_name||' | salary'|| emp_data.salary || ' | designation ' ||
+emp_data.job_id);
+exit when mining_data%Notfound;
+end loop;
+close mining_data;
+end;
+/ 
+set serveroutput on;
+declare 
+result number;
+sal employees.salary%type;
+cursor by_proc is
+select salary from employees where salary<=3000;
+begin
+open by_proc;
+loop
+fetch by_proc into sal;
+test_cur(sal,sal,result);
+dbms_output.put_line(sal);
+exit when by_proc%notfound;
+end loop;
+close by_proc;
+end;
+/
+set serveroutput on;
+create or replace procedure cur_test(a in int,b in int,c out int)
+is
+c:=a+b;
+dbms_output.put_line(c);
+end;
+
+
+set serveroutput on;
+declare 
+result number;
+sal employees.salary%type;
+cursor by_proc is
+select salary from employees where salary<=3000;
+begin
+open by_proc;
+loop
+fetch by_proc into sal;
+dbms_output.put_line(sal||by_proc%rowcount);
+test_cur(sal,sal,result);
+div_sal(sal,2,result);
+exit when by_proc%notfound;
+end loop;
+close by_proc;
+end;
+/
+

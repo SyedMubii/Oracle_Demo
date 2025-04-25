@@ -1,0 +1,162 @@
+Q-1.
+set serveroutput on
+declare
+a int;
+begin
+a:=&a;
+if a>0 then
+dbms_output.put_line('positive :'||a);
+else 
+dbms_output.put_line('negative: '||a);
+end if;
+end;
+/
+
+Q-2.
+set serveroutput on
+declare
+a int;
+b int;
+c int;
+begin
+a:=&a;
+b:=&b;
+c:=&c;
+if a>b and b>c then
+dbms_output.put_line('Greatest: '||a);
+else if b>a and b>c then
+dbms_output.put_line('Greatest: '||b);
+else 
+dbms_output.put_line('Greatest: '||c);
+end if;
+end if;
+end;
+/
+
+Q-3.
+set serveroutput on
+declare
+num number;
+num1 number;
+begin
+num:=2;
+loop
+num1:= num+2;
+exit when num=50;
+end loop;
+DBMS_output.put_line(' '||num);
+end;
+/
+
+3-2nd method
+set serveroutput on
+declare
+begin
+for c in 0 .. 50 loop
+if mod(c, 2) = 0 then
+DBMS_output.put_line(c);
+end if;
+end loop;
+end;
+/
+Q-4.
+set serveroutput on
+declare
+employee_id Number(6);
+salary number(6);
+avg_id number(6);
+begin
+select count(employee_id), avg(salary), avg(employee_id)
+INTO employee_id, salary, avg_id
+from employees
+where department_id in (10,20,30,40,50);
+dbms_output.put_line('Count(Employee_id): '||employee_id);
+dbms_output.put_line('Avg(Salary): '||salary);
+dbms_output.put_line('Avg(Employee_id): '||avg_id);
+end;
+/
+
+Q-5.
+create table new_salary
+(employee_id number(9),
+ name varchar2(25),
+ salary number(9)
+)
+
+insert into new_salary
+values (1, 'ABDUL SAMAD', 5000);
+
+select *
+from new_salary;
+
+set serveroutput on
+declare
+employee_id Number(6);
+name varchar2(25);
+salary number(6);
+begin
+select employee_id,
+          name,
+          salary
+INTO employee_id, name, salary
+from new_salary
+group by employee_id, salary, name;
+dbms_output.put_line('Employee_Id : '||employee_id);
+dbms_output.put_line('Name : '||name);
+dbms_output.put_line('Salary : '||salary);
+end;
+/
+Q-6.
+set serveroutput on
+declare
+a int;
+b int;
+c int;
+begin
+a:=&a;
+b:=&b;
+c:=&c;
+if a>b and b>c then
+dbms_output.put_line('Greatest: '||a);
+else if b>a and b>c then
+dbms_output.put_line('Greatest: '||b);
+else 
+dbms_output.put_line('Greatest: '||c);
+end if;
+end if;
+end;
+/
+
+Q-7.
+SET SERVEROUTPUT ON
+DECLARE
+N NUMBER;
+BEGIN
+N:=&N;
+IF MOD(N,2)=0
+THEN
+DBMS_OUTPUT.PUT_LINE('NUMBER OF ODD :'||N);
+ELSE
+DBMS_OUTPUT.PUT_LINE('NUMBER OF EVEN :'||N);
+END IF;
+END;
+/
+
+Q-8.
+SET SERVEROUT ON
+DECLARE
+YEAR NUMBER;
+BEGIN
+YEAR:=1600;
+IF MOD(YEAR,4)=0
+OR
+IF MOD(YEAR,100)!=0
+AND
+IF MOD(YEAR,400)=0
+THEN
+DBMS_OUTPUT.PUT_LINE(YEAR||'IS A LEAP YEAR');
+ELSE
+DBMS_OUTPUT.PUT_LINE(YEAR||'IS NOT A LEAP YEAR');
+END IF;
+END;
+/

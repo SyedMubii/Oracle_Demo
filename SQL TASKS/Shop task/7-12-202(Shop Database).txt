@@ -1,0 +1,55 @@
+<---- Products ---->
+
+create table products(
+product_name varchar2(50),
+category varchar2(25),
+price number(10),
+shelf_no number(3),
+product_id varchar(5),
+quantity number(5));
+
+
+
+describe products;
+
+
+<---- Employees_shop: ---->
+
+create table employees_shop(
+employee_id varchar2(3),
+first_name varchar2(10),
+last_name varchar2(10),
+phone_# number (12),
+salary number(10),
+address varchar2(40));
+
+describe employees_shop;
+
+
+<---- shelf_shop --->
+
+create table shelf_shop(
+shelf_no varchar2(3),
+product_id number(5),
+product_name varchar2(50));
+
+describe shelf_shop;
+
+
+<---- receipts ---->
+
+create table receipts_shop(
+receipt_id number(5),
+customer_name varchar2(25),
+product_name varchar2(25),
+quantity number(5),
+Total_price number(5),
+Purchased_Date date);
+
+
+describe receipts;
+
+select * from products;
+select * from shelf_shop;
+select * from employees_shop;
+select * from receipts;

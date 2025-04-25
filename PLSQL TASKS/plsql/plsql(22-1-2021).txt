@@ -1,0 +1,90 @@
+set serveroutput on
+declare
+type books is record(
+title varchar(50),
+author varchar(50),
+subject varchar(50),
+book_id number(10),
+b_type varchar(50)
+);
+book_1 books;
+book_2 books;
+book_3 books;
+book_4 books;
+book_5 books;
+begin
+--book_1
+book_1.title:='Bahar';
+book_1.author:='Gul Hassan';
+book_1.subject:='Poetry';
+book_1.book_id:='1';
+book_1.b_type:='Poetry';
+--book_2
+book_2.title:='Basic Programming';
+book_2.author:='Imran';
+book_2.subject:='Computers';
+book_2.book_id:='2';
+book_2.b_type:='Educational';
+--book_3
+book_3.title:='SQL';
+book_3.author:='Dayan';
+book_3.subject:='Computer';
+book_3.book_id:='3';
+book_3.b_type:='Educational';
+--book_4
+book_4.title:='SQL Programming';
+book_4.author:='Imaran';
+book_4.subject:='Computer';
+book_4.book_id:='4';
+book_4.b_type:='Educational';
+--book_5
+book_5.title:='Galib';
+book_5.author:='Galib';
+book_5.subject:='Poetry';
+book_5.book_id:=5;
+book_5.b_type:='Poetry';
+
+--print book 1 record
+dbms_output.put_line('Book 1 Records');
+dbms_output.put_line('--------------------');
+dbms_output.put_line('Book 1 Title: '||book_1.title);
+dbms_output.put_line('Book 1 Author: ' ||book_1.author);
+dbms_output.put_line('Book 1 Subject: '||book_1.subject);
+dbms_output.put_line('Book 1 Id: '||book_1.book_id);
+dbms_output.put_line('Book 1 Type: '||book_1.b_type);
+
+--print book 2 record
+dbms_output.put_line('Book 2 Records');
+dbms_output.put_line('--------------------');
+dbms_output.put_line('Book 2 Title: '||book_2.title);
+dbms_output.put_line('Book 2 Author: ' ||book_2.author);
+dbms_output.put_line('Book 2 Subject: '||book_2.subject);
+dbms_output.put_line('Book 2 Id: '||book_2.book_id);
+dbms_output.put_line('Book 2 Type: '||book_2.b_type);
+
+
+--print book 3 record
+dbms_output.put_line('Book 3 Records');
+dbms_output.put_line('--------------------');
+dbms_output.put_line('Book 3 Title: '||book_3.title);
+dbms_output.put_line('Book 3 Author: ' ||book_3.author);
+dbms_output.put_line('Book 3 Subject: '||book_3.subject);
+end;
+
+--print book 4 record
+dbms_output.put_line('Book 4 Records');
+dbms_output.put_line('--------------------');
+dbms_output.put_line('Book 4 Title: '||book_4.title);
+dbms_output.put_line('Book 4 Author: ' ||book_4.author);
+dbms_output.put_line('Book 4 Subject: '||book_4.subject);
+dbms_output.put_line('Book 4 Id: '||book_4.book_id);
+dbms_output.put_line('Book 4 Type: '||book_4.b_type);
+
+--print book 5 record
+dbms_output.put_line('Book 5 Records');
+dbms_output.put_line('--------------------');
+dbms_output.put_line('Book 5 Title: '||book_5.title);
+dbms_output.put_line('Book 5 Author: ' ||book_5.author);
+dbms_output.put_line('Book 5 Subject: '||book_5.subject);
+dbms_output.put_line('Book 5 Id: '||book_5.book_id);
+dbms_output.put_line('Book 5 Type: '||book_5.b_type);

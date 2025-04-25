@@ -1,0 +1,150 @@
+1-set serveroutput on
+declare
+ a number;
+begin
+a:=&a;
+if a<0 then
+DBMS_output.put_line('Negative');
+else
+DBMS_output.put_line('Positive');
+end if;
+end;
+
+2-
+
+3- set serveroutput on
+declare
+a number;
+num1 number:=0;
+begin
+a:=2;
+loop
+num1:= num1+a;
+exit when (a>50);
+DBMS_output.put_line(a);
+a:=a+1;
+end loop;
+DBMS_output.put_line('SUM :'||num1);
+end;
+3-2nd method
+set serveroutput on
+declare
+begin
+for c in 0 .. 50 loop
+if mod(c, 2) = 0 then
+DBMS_output.put_line(c);
+end if;
+end loop;
+end;
+
+4;set serveroutput on
+declare
+employee_id Number(6);
+salary number(6);
+avg_sal number(6);
+begin
+select count(employee_id), avg(salary), sum(salary)
+INTO employee_id, salary, avg_sal
+from employees
+where department_id in (10,20,30,40,50);
+dbms_output.put_line('Count(Employee_id): '||employee_id);
+dbms_output.put_line('Avg(Salary): '||salary);
+dbms_output.put_line('Avg(Employee_id): '||avg_sal);
+end;
+/
+
+5;create table new_salary
+(employee_id number(9),
+ name varchar2(25),
+ salary number(9)
+);
+insert into new_salary
+values (1, 'Daeyan', 500000);
+
+select * from new_salary;
+
+set serveroutput on
+declare
+employee_id Number(6);
+name varchar2(25);
+salary number(6);
+begin
+select employee_id,
+          name,
+          salary
+INTO employee_id, name, salary
+from new_salary
+group by employee_id, salary, name;
+dbms_output.put_line('Employee_Id : '||employee_id);
+dbms_output.put_line('Name : '||name);
+dbms_output.put_line('Salary : '||salary);
+end;
+/
+6;set serveroutput on
+declare
+a number;
+b number;
+c number;
+begin
+a:=&A;
+b:=&B;
+c:=&C;
+if a>b and a>c then
+DBMS_output.put_line('Greatest Number is '||a);
+else if b>c and b>a 
+then DBMS_output.put_line('Greatest Number is '||b);
+else
+DBMS_output.put_line('Greatest Number is '||c);
+end if;
+end if;
+end;
+
+7;set serveroutput on
+declare
+a number;
+begin
+a:=10;
+if mod(a,2)=0 then
+DBMS_output.put_line('Number is Even');
+else
+DBMS_output.put_line('Number is Odd');
+end if;
+end;
+
+8;set serveroutput on
+declare
+a number;
+begin
+a:=&A;
+if mod(a,4)=0 and mod(a,100)=0 or mod(a,400)=0
+then
+DBMS_output.put_line(a||' Is a Leap Year');
+else
+DBMS_output.put_line(a||' Is Not a Leap Year');
+end if;
+end;
+
+9;set serveroutput on
+declare
+emp_id number(10);
+sal number(10);
+b number(10);
+begin
+select employee_id, salary
+into emp_id,sal
+from employees
+where employee_id = &id;
+b:=sal*12;
+if b>20000 then
+DBMS_output.put_line('Annual Salary + Bonus : '||to_char(b||'+2000'));
+DBMS_output.put_line('Annual Salary : '||to_char(b+2000));
+else if b between 19999 and 10000 then
+DBMS_output.put_line('Annual Salary + Bonus : '||to_char(b||'+1000'));
+DBMS_output.put_line('Annual Salary : '||to_char(b+1000));
+else
+DBMS_output.put_line('Annual Salary + Bonus  : '||to_char(b||'+500'));
+DBMS_output.put_line('Annual Salary : '||to_char(b+500));
+end if;
+end if;
+end;
+/

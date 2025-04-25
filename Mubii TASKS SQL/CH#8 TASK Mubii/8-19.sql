@@ -1,0 +1,3 @@
+delete my_employee;
+
+

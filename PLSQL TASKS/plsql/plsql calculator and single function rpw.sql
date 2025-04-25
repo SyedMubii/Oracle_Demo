@@ -1,0 +1,45 @@
+set serveroutput on
+declare
+a int;
+b int;
+c int;
+d int;
+e float;
+f float;
+g float;
+h float;
+i float;
+j int;
+k float;
+l float;
+m float;
+n int;
+o varchar2(20);
+p varchar2(20);
+q varchar2(20);
+r varchar2(20);
+s varchar2(20);
+t varchar2(20);
+begin
+a:=10;
+b:=20;
+c:=a+b;
+d:=b-a;
+e:=a/b;
+f:=b*a;
+g:=a+b;
+h:=850;
+i:=700;
+j:=i/h*100;
+l:=16;
+k:= (l*(1/4));
+n:=27;
+m:=(n/9);
+o:=length('daeyan');
+p:=concat('Daeyan','Siddiqui');
+r:=instr('Daeyan', 'a');
+s:=lower('DAEYAN');
+t:=upper('daeyan');
+q:=trim('H' From 'HellowWorld');
+dbms_output.put_line(' Addition ='||c||' Subtraction ='||d||' Division ='||e||' Multiplication ='||f||' Average='||g/2||' Percentage ='||j||'%'||' Square Root = '||k||' Cube Root ='||m||' Daeyan Length ='||o||' Conact Of Daeyan at a = '||p||' Instr = '||r||' Lower ='||s||' Upper = '||t||' Trim ='||q);
+end;

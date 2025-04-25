@@ -1,0 +1,140 @@
+create table stations(station_name varchar2(30) , station_id number(10) , station_type varchar2(15), location_id number(10), city_name varchar2(35),train_id number(10));
+
+create table Trains(train_id number(10), train_name varchar2(30), train_type varchar2(30), track_id number(10));
+
+create table tracks (track_id number(10), route_id number(10));
+
+create table routes(route_id number(10), city_arrival varchar2(30), city_departure varchar2(30),track_id number(10)); 
+
+insert all
+into stations values('Hyderabad',10 ,'Junction',290 ,'Hyderabad',1 )
+into stations values('Rawalpindi',20 ,'Station',390 ,'Rawalpindi',2 )
+into stations values('Rohri',30 ,'Junction',490 ,'Rohri', 3)
+into stations values('Tando Adam',40 ,'Station',590 ,'Tando Adam',4 )
+into stations values('Nawab Shah',50 ,'Junction',690 ,'Nawab Shah',5 )
+select * from dual;
+
+
+select * from stations;
+
+
+insert all
+into Trains values(1,'Green line','luxury',12)
+into Trains values(2,'Awami','economy ',22)
+into Trains values(3,'shalimarr express','night coach',32)
+into Trains values(4,'Kyber mail','economy',42)
+into Trains values(5,'Tezgam','luxury',52)
+
+select * from dual;
+select *  from Trains;
+
+insert all 
+into Tracks values(12, 121)
+into Tracks values(22,122)
+into Tracks values(32,123)
+into Tracks values(42,124)
+into Tracks values(52,125)
+select * from dual;
+
+select * from tracks;
+
+insert all 
+into Routes values(121,'Rawalpindi','Hyderabad', 12)
+into Routes values(122,'Karachi','Hyderabad', 22)
+into Routes values(123,'Lahore','Hyderabad', 32)
+into Routes values(124,'Peshawar','Hyderabad', 42)
+into Routes values(125,'Karachi Cantt','Hyderabad',52 )
+select * from dual;
+
+select * from Routes;
+
+desc Stations;
+desc Trains;
+desc routes;
+desc tracks;
+
+
+alter table stations
+modify station_id primary key;
+
+
+
+alter table Trains
+modify train_id primary key;
+
+
+alter table tracks
+modify track_id primary key;
+
+
+alter table routes
+modify route_id primary key;
+
+alter table stations
+add constraint sta_tra_id_fk foreign key(train_id) REFERENCES Trains(train_id);
+
+alter table Trains
+add constraint tra_track_id_fk foreign key(track_id) REFERENCES tracks(track_id);
+
+alter table tracks
+add constraint tack_rout_id_fk foreign key(route_id) REFERENCES routes(route_id);
+
+CREATE SEQUENCE stations_staid_seq
+                INCREMENT BY 10
+                START WITH 10
+                MAXVALUE 100
+                NOCACHE
+                NOCYCLE;
+
+CREATE SEQUENCE stations_staid_seq
+                INCREMENT BY 10
+                START WITH 10
+                MAXVALUE 100
+                NOCACHE
+                NOCYCLE;
+
+SELECT	sequence_name, min_value, max_value, 
+	increment_by, last_number
+FROM	user_sequences;
+
+
+CREATE SEQUENCE trains_trainid_seq
+                INCREMENT BY 1
+                START WITH 1
+                MAXVALUE 10
+                NOCACHE
+                NOCYCLE;
+
+
+CREATE SEQUENCE tracks_trackid_seq
+                INCREMENT BY 10
+                START WITH 12
+                MAXVALUE 220
+                NOCACHE
+                NOCYCLE;
+
+
+
+CREATE SEQUENCE routes_routeid_seq
+                INCREMENT BY 1
+                START WITH 121
+                MAXVALUE 200
+                NOCACHE
+                NOCYCLE;
+
+
+INSERT INTO stations(department_id, 
+            department_name, location_id)
+VALUES      (dept_deptid_seq.NEXTVAL, 
+            'Support', 2500);
+
+create view railway_track_vu
+as select s.station_name,s.station_type, s.city_name,tra.train_name , tra.train_type, tr.track_id, r.city_arrival, r.city_departure
+from stations s join trains tra
+on s.train_id = tra.train_id
+join tracks tr
+on tr.track_id = tra.track_id
+join routes r
+on r.route_id = tr.route_id;
+
+select * from railway_track_vu;

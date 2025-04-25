@@ -1,0 +1,40 @@
+ALTER TABLE OWNER
+ADD OWNER_ADDRESS VARCHAR2(25);
+
+ALTER TABLE CAR
+ADD TEST_STATUS VARCHAR2(25);
+
+select * from customer
+select branch_name from loan
+select * from branch
+
+ALTER TABLE CAR
+DROP COLUMN YEAR_OF_PURCHASE;
+
+select account_number,balance
+from account
+where balance > 700;
+
+select account_number,balance
+from account
+where balance > 700
+and branch_name ='Qasimabad';
+
+rename assets to assets_in_tens;
+
+select branch_name
+from branch
+where assets between 1 and 400000
+
+select customer_name, account_number, balance
+from account, customer
+
+select customer_name, account_number, balance
+from account, customer
+where balance <=400
+
+ALTER TABLE OWNER
+DROP COLUMN OWNER_ADDRESS;
+
+
+

@@ -1,0 +1,2 @@
+create view employees_vu as select employee_id, last_name, department_id
+from employees;

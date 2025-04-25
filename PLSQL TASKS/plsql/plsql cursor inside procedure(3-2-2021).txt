@@ -1,0 +1,22 @@
+set serveroutput on 
+create or replace procedure mining is
+cursor m_data is select * from employees where job_id = '&Value';
+emp_data m_data%rowtype;
+begin
+open m_data;
+loop
+fetch m_data into emp_data;
+exit when m_data%notfound;
+dbms_output.put_line('Employee Name : '||emp_data.first_name||' '||emp_data.last_name||'Salary = '||' '||emp_data.salary||'Designation = '||emp_data.job_id);
+end loop;
+close m_data;
+end;
+/
+
+
+set serveroutput on
+declare
+begin
+mining();
+end;
+/

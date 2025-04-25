@@ -1,0 +1,277 @@
+task 1
+create table Employee
+(
+NAME varchar2(10) not null,
+MINT varchar(1) not null,
+LNAME varchar2(10) not null,
+SSN number(15) not null,
+BDATE date not null,
+ADDRESS varchar2(30) not null,
+SEX varchar2(1) not null,
+SAL number(10) not null,
+SUPERSSN number(15) not null,
+DNO  number (1) not null
+);
+insert all 
+into employee values('John','B','Smith',123456789,'09-JAN-1965','731 Fondren, Houston, TX','M',30000,333445555,5)
+into employee values('Franklin','T','Wrong',333445555,'08-DEC-1955','638 Voss, Houston, TX','M',40000,888665555,5)
+into employee values('Alicia','J','Zelaya',999887777,'19-JUL-1968','3321, Castle, Spring, TX','F',25000,987654321,4)
+into employee values('Ramesh','S','Wallace',987654321,'20-JUN-1941','975 Fire Oak, Humble TX','F',43000,888665555,4)
+into employee values('Joyce','A','English',453453453,'31-JUL-1972','5631 Rice, Houston, TX','F',25000,333445555,5)
+into employee values('Ahmad','V','Jabbar',987987987,'29-MAR-1969','980 Dallas, Houston, TX','M',25000,987654321,4)
+into employee values('James','E','Borg',888665555,'10-NOV-37','450 Stone, Houston, TX','M',55000,987654321,1)
+select * from dual;
+
+task 2
+create table department_2
+(
+DNAME varchar2(15) not null,
+DNUMBER number(1) not null,
+MGRSSN number(10) not null,
+MGRSTARTDATE date not null
+);insert all 
+into department_2 values('Research',5,333445555,'22-MAY-1988')
+into department_2 values('Administration',4,333445555,'22-MAY-1988')
+into department_2 values('Research',5,333445555,'22-MAY-1988')
+select * from dual
+
+task 3
+create table dept_locations
+(
+DNUMBER number(1) not null,
+DLOCATION varchar2(10) not null
+);
+insert all
+into dept_locations values(1,'Houston')
+into dept_locations values(4,'Stafford')
+into dept_locations values(5,'Bellarie')
+into dept_locations values(5,'Sugarland')
+into dept_locations values(5,'Houston')
+select * from dual;
+
+
+task 4
+create table project_2
+(
+PNAME varchar2(10) not null,
+PNUMBER number(2) not null,
+PLOCATION varchar2(15) not null,
+DNUM number(1) not null
+);
+insert all
+into project_2 values('ProjectX',1,'Bellaire',5)
+into project_2 values('ProjectY',2,'Sugarland',5)
+into project_2 values('ProjectZ',3,'Houston',5)
+into project_2 values('Computer',10,'Stafford',4)
+into project_2 values('Reorganize',20,'Houston',1)
+into project_2 values('Newbenefit',30,'Stafford',4)
+select * from dual;
+
+task 5
+create table DEPENDENT
+(
+ESSN number(10) not null,
+DEPENDENT_NAME varchar2(15) not null,
+SEX varchar2(1) not null,
+BDATE date not null,
+RELATIONSHIP varchar2(15) not null
+);
+insert all
+into DEPENDENT values(333445555,'Alice','F','05-APR-86','Daughter')
+into DEPENDENT values(333445555,'Theodore','M','25-OCT-83','Son')
+into DEPENDENT values(333445555,'Joy','F','03-MAY-58','Spouse')
+into DEPENDENT values(987654321,'Abner','M','28-FEB-42','Spouse')
+into DEPENDENT values(123456789,'Michael','M','04-JAN-88','Son')
+into DEPENDENT values(123456789,'Alice','F','30-DEC-88','Daughter')
+into DEPENDENT values(123456789,'Elizabeth','F','05-MAY-67','Spouse')
+select * from dual;
+
+task 6
+create table WORKS_ONs
+(
+ESSN number(10) not null,
+PNO number(2) not null,
+HOURS number(2,1)
+);
+insert all
+into WORKS_ONs values(123456789,1,3.5)
+into WORKS_ONs values(123456789,2,7.5)
+into WORKS_ONs values(666884444,3,4)
+into WORKS_ONs values(453553453,1,2)
+into WORKS_ONs values(453553453,2,2)
+into WORKS_ONs values(333445555,2,1)
+into WORKS_ONs values(333445555,3,1)
+into WORKS_ONs values(333445555,10,1)
+into WORKS_ONs values(333445555,20,1)
+into WORKS_ONs values(999887777,30,3)
+into WORKS_ONs values(999887777,10,3)
+into WORKS_ONs values(987987987,10,3)
+into WORKS_ONs values(987987987,30,5)
+into WORKS_ONs values(987654321,30,2)
+into WORKS_ONs values(987654321,20,5)
+into WORKS_ONs values(888665555,20,null)
+select * from dual;
+
+
+task 7
+create table employee1
+(
+fname varchar(15) not null,
+mint char(5),
+lname varchar2(15) not null,
+ssn varchar2(9) not null,
+bdate date,
+address varchar2(30),
+sex char(3),
+salary decimal(10,2),
+superssn varchar2(9),
+dno number(7) not null,
+constraint empe_ssn_pk PRIMARY KEY (ssn)
+);
+create table department1
+(
+dname varchar2(15) not null,
+dnumber number(7) not null,
+mgrssn varchar2(9),
+mgrstartdate date,
+constraint dept_d_num_pk PRIMARY KEY (dnumber),
+constraint dept_d_num_uk UNIQUE (dname)
+);
+create table dept_location 
+(
+dnumber number(7) not null,
+dlocation varchar2(15) not null,
+constraint dept_loc_d_num_pk PRIMARY KEY (dnumber)
+);
+create table projectss
+(
+essn varchar2(9) not null,
+dependent_name varchar2(15) not null,
+sec char(3),
+bdate date,
+relationship varchar2(12),
+constraint pjt_es_sn_pk primary key (essn)
+);
+create table work_on
+(
+essn varchar2(9) not null,
+pno number(3) not null,
+hours decimal (4,1),
+constraint wk_essn_pk primary key (essn)
+);
+				simple queries
+1
+select * from emp;
+2
+select * from employee;
+3
+select empno,empname,sal from emp1
+4
+select last_name from employees
+where manager_id is not null;
+5
+select last_name from employees
+where department_id =30
+or job_id = 'CLERK';
+6
+select ename,mgr
+from emp1
+where mgr = 7698;
+7
+select last_name 
+from employees
+where department_id = 20;
+8
+select last_name
+from employees
+where salary between 2000 and 3000;
+9
+select last_name
+from employees
+where department_id =10
+or department_id =20;
+10
+select last_name
+from employees
+where last_name like 'S%'
+11
+select last_name
+from employees
+where last_name like 'A%'
+12
+select HIRE_DATE
+from EMP1
+where HIRE_DATE LIKE 'JAN%'
+13
+14
+select distinct job_id from employees;
+15
+select last_name
+from employees
+oreder by asc;
+16
+select last_name,department_id
+from employees
+order last_name by asc;
+17
+select employee_id,last_name,salary
+from employees
+18
+select last_name, sys_date-hire_date as exp
+from employees;
+19
+select last_name from employees
+where commission_pct is null;
+20
+21
+select max(salary),min(salary),avg(salary)
+from employees;
+22
+select last_name,avg(salary)
+from employees
+where department_id = 30;
+23
+select max(salary),min(salary)
+from employees
+where job_id = 'ST_CLERK'
+OR job_id = 'SALESMEN';
+24
+SELECT avg(salary)
+from employees
+where hire_date ='81'
+or hire_date ='82'
+or hire_date ='83';
+25
+select distinct job_id 
+from employees
+where department_id =20;
+26
+27
+SELECT ename, TO_CHAR(hire_date, 'DD\month\year) 
+FROM   emp1
+WHERE  ename = 'SMITH'
+28
+SELECT ename, TO_CHAR(hire_date, 'Day\month\year) 
+FROM   emp1
+WHERE  ename = 'SMITH'
+29
+SELECT ename, TO_CHAR(hire_date, 'Day') 
+FROM   emp1
+WHERE  ename = 'SMITH';
+30
+SELECT ename, TO_CHAR(hire_date, 'DD/MM/YY') 
+FROM   emp1
+WHERE  ename = 'SMITH'
+31
+SELECT ename, (sysdate-hire_date)/365 experience
+FROM   emp1;
+32
+select deptno,min(sal),max(sal),avg(sal) from emp1 where deptno in(10,30) group by deptno;
+33
+select deptno,min(sal),max(sal),avg(sal) from emp1 group by deptno;
+35
+select job,min(sal),max(sal),avg(sal) from emp1 group by job;
+36
+select deptno,min(sal),max(sal),count(8) from emp1 group by deptno having count(*)>=2;
+
+

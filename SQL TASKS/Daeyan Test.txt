@@ -1,0 +1,221 @@
+Q-1
+
+select last_name,department_name,salary
+from employees, departments
+where commission_pct is not null
+and salary = 10000
+and location_id = 1700;
+
+Q-2
+
+select last_name as Name,department_id as "Department no", avg(salary) as Avarage, salary
+from employees
+where salary > (select avg(salary) from employees order by avg(salary))
+group by avg(salary);
+
+Q-3
+
+select employee_id,last_name, department_name
+from employees, departments;
+
+Q-4
+
+select department_id, min(salary) as "Minimum Salary",avg(salary)"Highest Average Salary"
+from employees
+where department_id = 30
+group by department_id;
+
+
+Q-5
+
+select last_name,department_id,hire_date "anniversary Overview"
+from employees 
+order by hire_date
+
+Q-6
+
+select employee_id,hire_date, job_id
+from employees
+where hire_date between '01-JAN-1990' and '30-MAR-1990'
+or hire_date between '01-JAN-1991' and '30-MAR-1991';
+
+Q-7
+
+select distinct department_id, job_id,manager_id
+from employees
+group by department_id, job_id,manager_id;
+
+Q-8
+
+1-select employee_id, hire_date,salary,manager_id
+from employees
+where employee_id<125;
+
+2-create table special_sal(
+employee_id varchar2(30),
+salary number(10)
+);
+
+insert into special_sal values(20,25000);
+
+select * from special_sal;
+
+3-create table sal_history(
+employee_id varchar2(30),
+hire_date date,
+salary number(10)
+);
+
+insert into sal_history values(21,'09-JAN-2005',25000);
+
+select * from sal_history;
+
+4-create table mgr_history(
+employee_id number(10),
+manager_id number(10),
+sys_date date
+)
+
+insert into mgr_history values(10,9,sysdate);
+
+select * from mgr_history;
+
+
+Q-9
+
+select department_id,count(employee_id)
+from employees
+where employee_id >=2
+and hire_date between '01-APR-2006' and '30-APR-2006'
+group by department_id;
+
+Q-10
+
+select count(*) total,
+sum(decode(to_char(hire_date,'YYYY'),1980,1,0))"1980",
+sum(decode(to_char(hire_date,'YYYY'),1981,1,0))"1981",
+sum(decode(to_char(hire_date,'YYYY'),1982,1,0))"1982",
+sum(decode(to_char(hire_date,'YYYY'),1987,1,0))"1987g"
+from employees;
+
+Q-11
+
+select job_id , hire_date
+from employees 
+where hire_date >  '31-JUL-1981';
+
+Q-12
+
+create index prch_order_inx
+on purchase_order(customer_id,order_date,ship_date);
+
+SELECT	ic.index_name, ic.column_name,
+	ic.column_position col_pos,ix.uniqueness
+FROM	user_indexes ix, user_ind_columns ic
+WHERE	ic.index_name = ix.index_name
+AND	ic.table_name = 'purchase_order';
+
+
+Q-13
+
+create index stock_item_inx
+on stock_item(stock_item_id,description,price);
+
+SELECT	ic.index_name, ic.column_name,
+	ic.column_position col_pos,ix.uniqueness
+FROM	user_indexes ix, user_ind_columns ic
+WHERE	ic.index_name = ix.index_name
+AND	ic.table_name = 'stock_item';
+
+Q-14
+
+select distinct e.employee_id, e.last_name, e.manager_id
+from employees e,employees m
+where e.employee_id = m. manager_id
+order by e.manager_id asc;
+
+Q-15
+
+select count(employee_id) Employees,count(e.manager_id) "Number of Managers "
+from employees e
+group by e.job_id,manager_id,employee_id
+having e.manager_id<>e.employee_id;
+
+Q-16
+
+select e.manager_id,e.salary,min(e.salary)
+from employees e
+group by e.manager_id,e.employee_id,e.salary
+having e.employee_id=e.manager_id
+and e.manager_id is not null
+and min(e.salary)>6
+order by e.salary desc;
+
+Q-17
+
+create view cus_vu
+as select customer ,customer_name,zip_code as postal_code from customer;
+
+Q-18
+
+select employee_id,last_name,department_id from employees
+where salary in (select e.manager_id from employees e);
+
+Q-19
+
+create table orders
+(
+ord_no number(4),
+purch_amt number(10),
+ord_date date,
+customer_id number(4),
+salesman_id number(4)
+);
+create table customers
+(
+customer_id number(4),
+cust_name varchar2(30),
+city varchar2(30),
+price number(10),
+salesman_id number(4)
+);
+create view order_vu
+as select count(o.customer_id) NOC,count(o.salesman_id) OSA,avg(o.purch_itm),count(o.ord_date) AOOD from orders o;
+
+
+Q-20
+
+select e.last_name 
+from employees e join employees m
+on e.employee_id=m.manager_id 
+where e.manager_id = 146;
+
+Q-21
+
+select last_name
+from employees , locations
+where city = (select job_id from employees where job_id='Oxford');
+
+Q-22
+
+select e.last_name,d.department_name,l.city
+from employees e,departments d,locations l;
+
+Q-23
+
+select d.department_id,d.department_name, count(e.employee_id)
+from employees e, departments d
+where e.department_id = d.department_id 
+having count(e.employee_id) > 5
+group by d.department_id,d.department_name;
+
+Q-24
+
+select e.manager_id,count(e.manager_id) 
+from employees e,employees m
+group by e.employee_id,m.manager_id,e.manager_id
+having e.employee_id=m.manager_id;
+
+Q-25
+
+select instr('Daeyan','a') from dual

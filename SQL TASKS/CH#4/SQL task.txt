@@ -1,0 +1,25 @@
+SELECT e.first_name ||  ' Work Under '|| m.first_name,e.hire_date as " Employee_StartDate", ROUND(MONTHS_BETWEEN(e.hire_date,m.hire_date)/12)||
+'years' as "Difference",e.salary as " Employee_salary",m.salary as "Manager_salary"
+FROM employees e, employees m
+WHERE e.manager_id = m.employee_id;
+
+
+SELECT ROUND(MONTHS_BETWEEN(sysdate,e.hire_date)/12)||'Yeras' as  "EMPLOYEE_EXPERINCE" , ROUND(MONTHS_BETWEEN(sysdate,m.hire_date)/12)|| 'years' as "MANAGER_EXPERINCE"
+FROM employees e , employees m 
+WHERE e.manager_id = m.employee_id;
+
+SELECT l.city as "Employee_City", l.city as "manager_City"
+FROM employees e ,employees m JOIN departments d 
+ON(m.department_id = d.department_id)
+JOIN locations l
+ON (d.location_id = l.location_id)
+WHERE e.manager_id = m.employee_id;
+
+
+SELECT e.employee_id, d.department_name , l.city
+FROM employees e JOIN departments d 
+ON(e.department_id = d.department_id)
+JOIN locations l
+ON (d.location_id = l.location_id)
+WHERE e.employee_id BETWEEN 100 AND 800
+ORDER BY e.employee_id;

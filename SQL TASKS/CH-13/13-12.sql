@@ -1,0 +1,1 @@
+select table_name,onwner from user_tables;

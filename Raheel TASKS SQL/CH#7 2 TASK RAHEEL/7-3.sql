@@ -1,0 +1,13 @@
+ DEFINE low_date = '01/01/1998'
+ DEFINE high_date = '01/01/1999'
+SELECT LAST_NAME||' , '||JOB_ID AS EMPLOYEE, HIRE_DATE
+FROM EMPLOYEES
+WHERE HIRE_DATE BETWEEN TO_DATE('&low_date','MM/DD/YYYY')
+AND 
+TO_DATE('&high_date','MM/DD/YYYY')
+; 
+
+
+
+
+

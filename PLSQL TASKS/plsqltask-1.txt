@@ -1,0 +1,56 @@
+1-set serveroutput on
+declare
+a int;
+b int;
+c int;
+d int;
+e int;
+f float;
+begin
+a:=&A;
+b:=&B;
+c:=a+b;
+d:=a-b;
+e:=a*b;
+f:=a/b;
+DBMS_output.put_line('  Sum Of variables ='||c||'  Subtraction Of variables ='||d||'  Multiplication Of variables ='||e||'  Division Of variables ='||f);
+end;
+
+2-set serveroutput on
+declare
+a number;
+b number;
+c number;
+begin
+a:=&Num1;
+b:=&Num2;
+DBMS_output.put_line('Before Swap :  '||'Num1= '||a||'  Num2= '||b);
+c:=a;
+a:=b;
+b:=c;
+DBMS_output.put_line('After Swap :  '||'Num1= '||a||'  Num2= '||b);
+end;
+/
+
+3-set serveroutput on
+declare
+id employees.employee_id%type;
+name employees.last_name%type;
+a number;
+begin
+a:=&ID;
+DBMS_output.put_line('ID = '||a);
+select employee_id,last_name into a,name from employees where employee_id = a;
+DBMS_output.put_line('Name Of Employee is '||name||' And Employee ID= '||a);
+end;
+
+4- ???
+
+5-set serveroutput on
+declare
+a char;
+begin
+a:=&a;
+DBMS_output.put_line(ascii(a));
+end;
+/

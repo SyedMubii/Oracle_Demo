@@ -1,0 +1,7 @@
+insert all
+into employee  (EMPLOYEE_ID, FIRST_NAME, LAST_NAME, PHONE_NUMBER, SALARY, ADDRESS) values(1, 'Ali','Shaikh',0300-0987456,12000 ,'123-Hyderabad')
+into employee (EMPLOYEE_ID, FIRST_NAME, LAST_NAME, PHONE_NUMBER, SALARY, ADDRESS) values(2, 'Rafique','Shahid',0310-7460456,11000 ,'1203,Hyderabad')
+into employee (EMPLOYEE_ID, FIRST_NAME, LAST_NAME, PHONE_NUMBER, SALARY, ADDRESS) values(3, 'Imran','Qureshi',0345-9085456,6890 ,'1453-Hyderabad')
+into employee (EMPLOYEE_ID, FIRST_NAME, LAST_NAME, PHONE_NUMBER, SALARY, ADDRESS) values(4, 'Sadaat','jatoi',0306-1257356,4000 ,'783-Hyderabad')
+into employee  (EMPLOYEE_ID, FIRST_NAME, LAST_NAME, PHONE_NUMBER, SALARY, ADDRESS) values(5, 'Sarib','Khan',0312-0947856,10000 ,'673-Hyderabad')
+select * from dual;

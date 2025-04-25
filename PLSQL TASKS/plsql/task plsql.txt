@@ -1,0 +1,48 @@
+<---Single--->
+set serveroutput on
+DECLARE
+earn number(8);
+name varchar2(35);
+BEGIN
+select salary,last_name
+into earn,name
+from Employees
+where employee_id=151;
+DBMS_output.put_line('Salary = '||earn||'   Name = '||name);
+END;
+/
+
+
+set serveroutput on
+DECLARE
+earn number(8);
+name varchar2(35);
+earn1 number(8);
+name1 varchar2(35);
+BEGIN
+select salary,last_name
+into earn,name
+from Employees
+where employee_id=152;
+select salary,last_name
+into earn1,name1
+from Employees
+where employee_id=151;
+DBMS_output.put_line('Salary = '||earn||'   Name = '||name);
+DBMS_output.put_line('Salary = '||earn1||'   Name = '||name1);
+END;
+/
+
+
+set serveroutput on
+DECLARE
+earn employees.salary%type;
+name employees.last_name%type;
+begin
+select last_name, salary
+into name,earn
+from employees
+where salary>=1000;
+DBMS_output.put_line(name||'  '||earn);
+end;
+

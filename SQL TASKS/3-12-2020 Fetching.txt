@@ -1,0 +1,36 @@
+<---Crating Table--->
+
+
+CREATE table H_R(
+    JOB_ID varchar2(15),
+    FIRST_NAME varchar2(30),
+    LAST_NAME varchar2(30),
+    HIRE_DATE date,
+    JOB_TITLE varchar2(50),
+    MANAGER_ID number(10),
+    DEPARTMENT_ID number(10),
+    DEPARTMENT_NAME varchar2(50),
+    SALARY number(20),
+    LOCATION_ID number (10),
+    CITY varchar2(20),
+    STATE_PROVINCE varchar2(20)
+);
+
+<---Insert Data In To Table--->
+
+
+INSERT INTO H_R(job_id,first_name,last_name,hire_date,job_title,manager_id,department_id,department_name,salary,location_id,city,state_province)
+select e.job_id,e.first_name,e.last_name,e.hire_date,j.job_title,e.manager_id,e.department_id,d.department_name,e.salary,d.location_id,l.city,l.state_province
+from employees e JOIN jobs  j
+ON(e.job_id = j.job_id)
+JOIN departments d 
+ON (e.department_id = d.department_id)
+JOIN locations l 
+ON (d.location_id = l.location_id);
+
+<---Explore Table--->
+
+
+
+SELECT *
+FROM  H_R;

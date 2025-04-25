@@ -1,0 +1,113 @@
+Task-1----------------
+create or replace procedure power_2_f(x in number, y in number, z out number)
+is
+begin
+z:=((x*x)+2*(x*y)+y*y);
+end;
+/
+set serveroutput on;
+begin
+power_2_f(a,b,c);
+dbms_output.put_line('('||a||'+'||b||')'||'^2 = '||c);
+end;
+/
+
+Task:2----------------
+
+set serveroutput on;
+create or replace procedure mod_f(x in number, y in number, z out number)
+is
+begin
+z:=mod(x,y);
+end;
+/
+set serveroutput on;
+begin
+mod_f(20,200,c);
+dbms_output.put_line('Mod of '||a||' and '||b||' is = '||c);
+end;
+/
+commit
+
+
+task:3-----------------------
+create or replace procedure avg(x in number, y in number, z in number, e in number, t in number, c out number )
+is
+begin
+c:=x+y+z+e+t/5;
+end;
+/
+
+set serveroutput on;
+declare
+c number;
+begin
+avg(5,6,70,90,8,c);
+end;
+/
+
+task:4------------------------
+declare
+a number;
+b number;
+c number;
+d number;
+e number;
+f number;
+g number;
+procedure cal(x in number, y in number, p out number, m out number, mul out number, d out number )
+is
+begin
+p:=x+y;
+m:=x-y;
+mul:=x*y;
+d:=x/y;
+end;
+begin
+a:=200;
+b:=20;
+cal(a,b,c,e,f,g);
+dbms_output.put_line('Addition of '||a||' and '||b||' is = '||c);
+dbms_output.put_line('Substraction of '||a||' and '||b||' is = '||e);
+dbms_output.put_line('Multiplication of '||a||' and '||b||' is = '||f);
+dbms_output.put_line('Division of '||a||' and '||b||' is = '||g);
+end;
+
+task-5----------------------
+set serveroutput on
+declare
+m_sal employees.salary%type;
+avg_sal employees.salary%type;
+cursor payment
+is
+select max(salary),avg(salary) from employees;
+begin
+open payment;
+fetch payment into m_sal,avg_sal;
+dbms_output.put_line('Max-Salary'||'----'||'Minimum Salary');
+dbms_output.put_line(m_sal||'-----'||avg_sal);
+close payment;
+end;
+/
+
+task:6------------------------------
+declare
+v_emp employees%rowtype;
+d_emp departments%rowtype;
+
+cursor c_data
+is
+select *
+from employees e join departments d
+on e.department_id = d.department_id
+where d.department_name in ('Shipping','Sales','Finance');
+begin
+open c_data;
+loop
+fetch c_data into d_emp;
+exit when c_data%notfound;
+dbms_output.put_line(v_emp.first_name||' '||v_emp.last_name||' '||d_emp.department_name);
+end loop;
+close  c_emp;
+end;
+/

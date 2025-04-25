@@ -1,0 +1,55 @@
+Emloyees Table
+
+create table employees_copy as select * from employees
+
+alter table employees_copy
+add constraint emp_c_emp_id_pk
+primary key(EMPLOYEE_ID);
+
+alter table employees_copy
+drop constraint SYS_C00576
+
+alter table employees_copy
+drop constraint SYS_C005764
+
+alter table employees_copy
+modify (last_name constraints emp_c_last_name not null);
+
+alter table employees_copy
+modify (job_id constraints emp_c_job_id not null);
+
+alter table employees_copy
+modify (email constraints emp_c_email not null);
+
+alter table employees_copy
+modify (hire_date constraints emp_c_hire_date not null);
+
+alter table employees_copy
+modify (salary constraints emp_c_salary check(salary>0));
+
+ALTER TABLE     employees_copy
+ADD CONSTRAINT  emp_c_manager_fk 
+FOREIGN KEY(manager_id)
+REFERENCES employees_copy(employee_id);
+
+
+Departments Table
+
+create table departments_copy as select * from departments
+
+alter table departments_copy
+drop constraint SYS_C005762
+
+
+
+SELECT	constraint_name, constraint_type,search_condition
+FROM	user_constraints
+WHERE	table_name = 'EMPLOYEES_COPY';
+
+alter table departments_copy
+modify (department_name constraints dept_c_dept_name not null);
+
+ALTER TABLE     departments_copy
+ADD CONSTRAINT  dept_c_manager_fk 
+FOREIGN KEY(manager_id) 
+REFERENCES employees_copy(manager_id);

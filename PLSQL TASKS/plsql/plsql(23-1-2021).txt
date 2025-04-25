@@ -1,0 +1,69 @@
+1-
+create table Telephone_dictionary(
+CONTACT_ID NUMBER(8) PRIMARY KEY,
+CONTACT_NAME VARCHAR2(32) NOT NULL,
+PHONE_NUMBER VARCHAR2(32) NOT NULL UNIQUE,
+EMAIL_ADDRESS VARCHAR2(32) NOT NULL,
+PROGRAM VARCHAR2(32) NOT NULL
+);
+2-
+insert all
+into Telephone_dictionary values(1,'Douglas',3312345678,'Douglas@navttc.com','Oracle ERP')
+into Telephone_dictionary values(2,'Jennifer',3312345679,'Jennifer@navttc.com','Oracle ERP')
+into Telephone_dictionary values(3,'Michael',3312345680,'Michael@navttc.com','Oracle ERP')
+into Telephone_dictionary values(4,'Pat',3312345681,'Pat@navttc.com Oracle','Oracle ERP')
+into Telephone_dictionary values(5,'Susan',3312345682,'Susan@navttc.com','Oracle ERP')
+into Telephone_dictionary values(6,'Hermann',3312345683,'Hermann@navttc.com','Oracle ERP')
+into Telephone_dictionary values(7,'Shelley',3312345684,'Shelley@navttc.com ','Financial Accounting')
+into Telephone_dictionary values(8,'William',3312345685,'William@navttc.com','Financial Accounting')
+into Telephone_dictionary values(9,'Steven',3312345686,'Steven@navttc.com','Financial Accounting')
+into Telephone_dictionary values(10,'Neena',3312345687,'Neena@navttc.com','Financial Accounting')
+into Telephone_dictionary values(11,'Lex',3312345689,'Lex@navttc.com','Financial Accounting')
+into Telephone_dictionary values(12,'Alexander',3312345690,'Alexander@navttc.com','Financial Accounting')
+select * from dual;
+
+3-
+set serveroutput on
+declare
+con_id Telephone_dictionary.contact_id%type;
+con_name Telephone_dictionary.contact_name%type;
+ph_no Telephone_dictionary.phone_number%type;
+email Telephone_dictionary.email_address%type;
+program Telephone_dictionary.program%type;
+begin
+select contact_id,contact_name,email_address,phone_number,program
+into con_id,con_name ,email , ph_no ,program 
+from Telephone_dictionary
+where contact_id = 8;
+dbms_output.put_line('Contact Id = '||con_id);
+dbms_output.put_line('Contact Name = '||con_name);
+dbms_output.put_line('Phone Number ='||email);
+dbms_output.put_line('Email = '||ph_no);
+dbms_output.put_line('Program = '||program );
+end;
+
+
+
+
+
+
+set serveroutput on
+declare
+con_id Telephone_dictionary.contact_id%type;
+con_name Telephone_dictionary.contact_name%type;
+ph_no Telephone_dictionary.phone_number%type;
+email Telephone_dictionary.email_address%type;
+program Telephone_dictionary.program%type;
+begin
+loop
+select contact_id,contact_name,email_address,phone_number,program
+into con_id,con_name ,email , ph_no ,program 
+from Telephone_dictionary
+where contact_id = 8;
+dbms_output.put_line('Contact Id = '||con_id);
+dbms_output.put_line('Contact Name = '||con_name);
+dbms_output.put_line('Phone Number ='||email);
+dbms_output.put_line('Email = '||ph_no);
+dbms_output.put_line('Program = '||program );
+end loop;
+end;

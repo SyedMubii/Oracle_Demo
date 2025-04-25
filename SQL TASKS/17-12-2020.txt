@@ -1,0 +1,140 @@
+1
+create table branchs
+(
+Branch_No number(1),
+Branch_Name varchar2(30),
+constraint bch_brh_no_pk PRIMARY KEY (Branch_No)
+);
+alter table Branchs
+modify (Branch_Name varchar2(25));
+rename Branchs to Branch_info;
+ALTER TABLE BRANCH_INFO
+ADD (EMAILID VARCHAR2(15));
+ALTER TABLE BRANCH_INFO
+ADD CONSTRAINTS BCH_EML_ID_U UNIQUE (EMAILID);
+ALTER TABLE BRANCH_INFO
+DROP COLUMN EMAILID;
+2
+CREATE TABLE STUDENTS
+(
+NAME VARCHAR2(30) NOT NULL,
+REGISTER_NO NUMBER(11),
+BRANCH_NO NUMBER(1),
+SEC VARCHAR2(1) NOT NULL,
+JOIN_DATE DATE NOT NULL,
+MARK NUMBER(5,2) NOT NULL,
+CONSTRAINT STD_REG_NO_PK PRIMARY KEY (REGISTER_NO),
+CONSTRAINT STD_BCH_NO_FK FOREIGN_KEY (BRANCH_NO)
+REFERENCES BRANCH_INFO (BRANCH_NO)
+);
+ALTER TABLE STUDENTES
+ADD EMAIL_ID VARCHAR2(25) UNIQUE;
+ALTER TABLE STUDENTES
+MODIFY (STUDENT_NAME VARCHAR2(25));
+RENAME STUDENTES TO BRANCH_STUDENT_DATA
+ALTER TABLE BRANCH_STUDENT_DATA
+DROP COLUMN EMAIL_ID;
+3
+CREATE TABLE MARKGRADE
+(
+GRADE VARCHAR2(1) NOT NULL,
+LOWMARK NUMBER(5,2) NOT NULL,
+HIGHMARK NUMBER(5,2) NOT NULL
+);
+ALTER TABLE MARKGRADE
+ADD (STUDENT_NAME VARCHAR2(30) NOT NULL)
+ALTER TABLE MARKGRADE
+MODIFY (STUDENT_NAME VARCHAR2(25))
+RENAME MARKGRADE TO STDENTS_MARK_GRADE;
+4
+CREATE TABLE PROJECT
+(
+PNO NUMBER(3),
+PNAME VARCHAR2(60),
+PMGR NUMBER(4) NOT NULL,
+PERSONS NUMBER(3),
+BUDGET NUMBER(8,2),
+PSTART DATE NOT NULL,
+PEND DATE,
+CONSTRAINT PJT_P_NO_PK PRIMARY KEY(PNO)
+);
+5
+INSERT ALL
+INTO BRANCH_INFO VALUES(1,'CIVIL')
+INTO BRANCH_INFO VALUES(2,'COMPUTER SCIENCE')
+INTO BRANCH_INFO VALUES(3,'ELECTRICAL')
+INTO BRANCH_INFO VALUES(4,'ELECTRONICS')
+INTO BRANCH_INFO VALUES(5,'INFORMATION TECHNOLOGY')
+INTO BRANCH_INFO VALUES(6,'INSTRUMENTATION')
+INTO BRANCH_INFO VALUES(7,'MECHANICAL')
+INTO BRANCH_INFO VALUES(8,'MBA')
+INTO BRANCH_INFO VALUES(9,'MCA')
+select * from dual;
+6
+insert all
+into branch_student_data values('AASHA RANI',11308104001,2,'A','02-AUG-2008',99)
+into branch_student_data values('MANDYAM HARIKA',11308106061,4,'B','04-AUG-2008',75)
+into branch_student_data values('ABDUL SAMAD',11308209001,5,'A','02-AUG-2008',100)
+into branch_student_data values('PRIYA DHARSHINI',11308205062,5,'B','18-SEP-2008',90)
+into branch_student_data values('AISHWARYA',11308103001,1,'A','09-AUG-2008',78)
+into branch_student_data values('RAMMANOHAR',11308103030,1,'A','01-AUG-2008',65)
+into branch_student_data values('AHAMED THAHA',11308114001,7,'A','25-JUL-2008',90)
+into branch_student_data values('PRAVEEN',11308114025,7,'A','28-JUL-2008',75)
+into branch_student_data values('ABINAYA',11308105001,3,'A','01-AUG-2008',90)
+into branch_student_data values('KANIMOZHI',11308107028,6,'A','06-AUG-2008',80)
+into branch_student_data values('MADHU USOODHANA',11308105023,3	,'A','28-JUL-2008',90)
+into branch_student_data values('ANISH KUMAR',11308100001,6,'A','26-JUL-2008',90)
+into branch_student_data values('KANIMOZHI',11308107027,6,'A','06-AUG-2008',80)
+into branch_student_data values('MADHO USOODHANA',11308107001,3,'A','28-JUL-2008',90)
+select * from dual;
+7
+SELECT * FROM BRANCH_STUDENT_DATA;
+8
+SELECT * FROM BRANCH_INFO;
+9
+create table EMP
+(
+empno number(4),
+ename varchar2(10),
+job varchar2(10),
+mgr number(4),
+hiredate date,
+sal number(6,2),
+comm number(5,2),
+deptno number(2)
+);
+insert all 
+into emp(empno,ename,job,mgr,hiredate,sal,comm,deptno) values(7369,'SMITH','CLERK',7902,'13-JUN-1998',800.00,0.00,20)
+into emp(empno,ename,job,mgr,hiredate,sal,comm,deptno) values(7654,'MARTIN','SALESMAN',7698,'05-DEC-1998',1250.00,140.00,30)
+into emp(empno,ename,job,mgr,hiredate,sal,deptno) values(7902,'FORD','ANALYST',7566,'05-DEC-1997',3000.00,20)
+into emp(empno,ename,job,mgr,hiredate,sal,deptno) values(7934,'MILLER','CLERK',7782,'21-JAN-2000',1300.00,10)
+into emp(empno,ename,job,mgr,hiredate,sal,deptno) values(7900,'JAMES','CLERK',7698,'23-JUN-2000',950.00,30)
+into emp(empno,ename,job,mgr,hiredate,sal,deptno) values(7876,'ADAMS','CLERK',7788,'04-JUN-1999',1100.00,20)
+into emp(empno,ename,job,mgr,hiredate,sal,comm,deptno) values(7844,'TURNER','SALESMAN',7698,'04-JUN-1995',1500.00,0.00,30)
+into emp(empno,ename,job,hiredate,sal,comm,deptno) values(7839,'KING','PRESIDENT','09-JUN-1990',5000.00,0.00,10)
+into emp(empno,ename,job,mgr,hiredate,sal,deptno) values(7788,'SCOTT','ANALYST',7566,'05-MAR-1996',3000.00,20)
+into emp(empno,ename,job,mgr,hiredate,sal,deptno) values(7782,'CLARK','MANAGER',7839,'14-MAY-1993',2450.00,10)
+into emp(empno,ename,job,mgr,hiredate,sal,deptno) values(7698,'BLAKE','MANAGER',7839,'11-JUN-1992',2850.00,30)
+into emp(empno,ename,job,mgr,hiredate,sal,comm,deptno) values(7521,'WARD','SALESMAN',7698,'26-MAR-1996',1250.00,500.00,30)
+into emp(empno,ename,job,mgr,hiredate,sal,deptno) values(7566,'JONES','MANAGER',7839,'31-OCT-1995',2975.00,20)
+into emp(empno,ename,job,mgr,hiredate,sal,comm,deptno) values(7499,'ALLEN','SALESMAN',7698,'15-AUG-1998',1600.00,300.00,30)
+SELECT * FROM DUAL;
+10
+UPDATE EMP
+SET SAL = 1500.00
+WHERE ENAME = 'scott'
+11
+UPDATE EMP
+SET SAL = 1500.00
+WHERE job = 'CLERK'
+12
+SELECT ENAME,JOB FROM EMP;
+13
+DELETE EMP
+WHERE ENAME= 'KING'
+
+
+NOT WORKING
+ALTER TABLE STUDENTES
+ADD CONSTRAINT STD_BCH_NO_FK FOREIGN_KEY (BRANCH_NO)
+REFERENCES BRANCH_INFO (BRANCH_NO)

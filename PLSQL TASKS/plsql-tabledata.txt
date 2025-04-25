@@ -1,0 +1,15 @@
+create table student(
+name varchar2(30),
+roll_no number(30) Primary key,
+Semester varchar2(30),
+fee number(30)
+);
+
+insert all
+into student values('Saif',10,'6th',80000)
+into student values('Raheel',11,'1st',21000)
+into student values('Shahil',12,'2nd',23000)
+into student values('Sami',13,'8th',20000)
+into student values('Imran',14,'7th',20000)
+select * from dual;
+

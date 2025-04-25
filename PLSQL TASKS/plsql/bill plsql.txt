@@ -1,0 +1,11 @@
+1-set severoutput on
+begin
+insert into Customer(Meter_no,Unit_used,Rate_A,Rate_I,Rate_C,Rate_R,Amount,Surcharge_5%,Amount,Surcharge_10%,Excise_duty,Net_amount)
+values(1,10,1,1.25,1.50,1.30,10,0.5,1.5,3.1,13.6)
+end;
+
+2-set severoutput on
+begin
+insert into Customer(Total_amount,Surcharge_5%,Surcharge_10%,Excise,Net_(Total))
+values(10,0.5,1.5,3.1,33.5)
+end;

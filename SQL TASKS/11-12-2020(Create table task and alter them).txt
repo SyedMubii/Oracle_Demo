@@ -1,0 +1,194 @@
+<--- Car--->
+create table car(
+CAR_REG_NO number(10), 
+BRAND varchar2(20),
+MODEL number(10),
+VARIANT varchar2(10),
+MODEL_YEAR number(10),
+COLOR varchar2(10),
+year_of_purchase number(4),
+KILOMETERSnumber(10))
+
+
+
+create table owner(
+OWNER_ID number(10),
+OWNER_NAME varchar2(30),
+OWNER_PHONE number(15),
+LICENSE_NUMBER number(8))
+
+
+
+create table owner_id(
+OWNER_ID varchar2(30),
+CAR_REG_NO varchar2(30),
+PRICE number(10))
+
+
+
+
+
+insert all
+into car (CAR_REG_NO, BRAND ,MODEL ,VARIANT ,MODEL_YEAR ,COLOR, KILOMETERS) values(1234, 'Toyota', 'Corolla', 'Sedan', 2019, 'Black', 1200)
+into car (CAR_REG_NO, BRAND ,MODEL ,VARIANT ,MODEL_YEAR ,COLOR, KILOMETERS) values(9845, 'Honda', 'Civic', 'Sedan', 2017, 'White', 10200)
+into car (CAR_REG_NO, BRAND ,MODEL ,VARIANT ,MODEL_YEAR ,COLOR, KILOMETERS) values(7864, 'Audi', 'A5', 'Sedan', 2019, 'Black', 0)
+into car (CAR_REG_NO, BRAND ,MODEL ,VARIANT ,MODEL_YEAR ,COLOR, KILOMETERS) values(1098, 'Ford', 'Mustang', 'Muscle', 2019, 'Gray', 1500)
+into car (CAR_REG_NO, BRAND ,MODEL ,VARIANT ,MODEL_YEAR ,COLOR, KILOMETERS) values(1289, 'BMW', 'BMW i8', 'Sports', 2020, 'Red', 12000) 
+select * from dual;
+
+
+
+insert all
+into owner (OWNER_ID, OWNER_NAME ,OWNER_PHONE ,LICENSE_NUMBER ,TEST_STATUS) values(123, 'Imran', 09893478, 90875,'yes')
+into owner (OWNER_ID, OWNER_NAME ,OWNER_PHONE ,LICENSE_NUMBER ,TEST_STATUS) values(126, 'Sahil', 52377626, 90875,'yes')
+into owner (OWNER_ID, OWNER_NAME ,OWNER_PHONE ,LICENSE_NUMBER ,TEST_STATUS) values(125, 'Akash', 31534273, 90875,'yes')
+into owner (OWNER_ID, OWNER_NAME ,OWNER_PHONE ,LICENSE_NUMBER ,TEST_STATUS) values(124, 'Muneeb', 72510636, 90875,'yes')
+into owner (OWNER_ID, OWNER_NAME ,OWNER_PHONE ,LICENSE_NUMBER ,TEST_STATUS) values(122, 'Muneeb', 73683783, 76788,'yes')
+select * from dual;
+
+
+insert all
+into owner_car (OWNER_ID,CAR_REG_NO ,PRICE) values(123,1234,98138896)
+into owner_car (OWNER_ID,CAR_REG_NO ,PRICE) values(126,9845,12000000)
+into owner_car (OWNER_ID,CAR_REG_NO ,PRICE) values(125,7864,990829408)
+into owner_car (OWNER_ID,CAR_REG_NO ,PRICE) values(124,1098,9139090908)
+into owner_car (OWNER_ID,CAR_REG_NO ,PRICE) values(122,1289,966767678)
+select * from dual;
+
+alter table owner_car
+add (year_used number(15));
+
+drop table owner_car;
+
+alter table owner
+modify (license_number number(20))
+
+
+
+
+<------Bank------>
+create table branch(
+branch_name varchar2(30),
+branch_city varchar2(30),
+assets number(10))
+
+
+create table customer(
+customer_name varchar2(20),
+customer_street varchar2(20),
+customer_city varchar2(20)
+)
+
+
+create table account(
+account_number number(10),
+branch_name varchar2(20),
+account_number number(10)
+)
+
+create table loan(
+loan_number number(10),
+branch_name varchar2(25),
+amount number(20)
+)
+
+create table depositer(
+customer_name varchar2(20),
+amount number(20)
+)
+
+create table borrower(
+customer_name varchar2(20),
+loan_number number(10)
+)
+
+
+create table employee_bank(
+employee_name varchar2(30),
+branch_name varchar2(30),
+salary number(8)
+)
+
+
+
+
+
+
+insert all
+into branch(branch_name, branch_city, assets) values('latifabad unit no 7', 'Hyderabad', 100)
+into branch(branch_name, branch_city, assets) values('Society Phase-1', 'Hyderabad', 50)
+into branch(branch_name, branch_city, assets) values('latifabad no 11', 'Hyderabad', 78)
+into branch(branch_name, branch_city, assets) values('City', 'Hyderabad', 34)
+into branch(branch_name, branch_city, assets) values('Qasimabad', 'Hyderabad', 90)
+select * from dual;
+
+
+insert all
+into customer values('Akash', '1234-Qasimabad', 'Hyderabad')
+into customer values('Sahil', '1434-Qasimabad', 'Hyderabad')
+select * from dual;
+
+insert all
+into account values(64, 'Qasimabad', '1098787')
+into account values(12, 'City', '1000')
+select * from dual;
+
+insert all
+into loan values(69, 'Qasimabad', '250000')
+into loan values(34, 'City', '100')
+select * from dual;
+
+insert all
+into depositor values('Akash', 980)
+into depositor values('Sahil', 670)
+select * from dual;
+
+insert all
+into borrower values('Akasha', 80)
+into borrower values('Sohail', 56)
+select * from dual;
+
+insert all
+into employee_bank values('Nadeem', 'City', 1200)
+into employee_bank values('Imran', 'Qasimabad',1900)
+select * from dual;
+
+select * from customer
+select branch_name from loan
+select * from branch
+
+select account_number,balance
+from account
+where balance > 700;
+
+select account_number,balance
+from account
+where balance > 700
+and branch_name ='Qasimabad';
+
+rename assets to assets_in_tens;
+
+select branch_name
+from branch
+where assets between 1 and 400000
+
+select customer_name, account_number, balance
+from account, customer
+
+select customer_name, account_number, balance
+from account, customer
+where balance <=400
+
+
+<----School--->
+create table students(
+students_id number(10),
+age number(10),
+gender varchar2(30),
+address varchar2(30),
+course varchar2(30),
+grade varchar2(30),
+last_name varchar2(30),
+first_name varchar2(30),
+fee_paid varchar2(10),
+)

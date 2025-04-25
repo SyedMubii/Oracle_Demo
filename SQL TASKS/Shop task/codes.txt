@@ -1,0 +1,92 @@
+<----Products Table--->
+insert all
+into products (PRODUCT_NAME, CATEGORY,PRICE,SHELF_NO,PRODUCT_ID,QUANTITY) values('lifeboy','Household',100,1,2,190)
+into products (PRODUCT_NAME, CATEGORY,PRICE,SHELF_NO,PRODUCT_ID,QUANTITY) values('safe guard','Household',170,1,3,190)
+into products (PRODUCT_NAME, CATEGORY,PRICE,SHELF_NO,PRODUCT_ID,QUANTITY) values('lark','Household',100,1,4,190)
+into products (PRODUCT_NAME, CATEGORY,PRICE,SHELF_NO,PRODUCT_ID,QUANTITY) values('colgate','Household',150,1,5,190)
+into products (PRODUCT_NAME, CATEGORY,PRICE,SHELF_NO,PRODUCT_ID,QUANTITY) values('medicam','Household',190,1,6,190)
+into products (PRODUCT_NAME, CATEGORY,PRICE,SHELF_NO,PRODUCT_ID,QUANTITY) values('sheild','Household',185,1,7,190)
+into products (PRODUCT_NAME, CATEGORY,PRICE,SHELF_NO,PRODUCT_ID,QUANTITY) values('carrot','Grocery',75,2,8,40)
+into products (PRODUCT_NAME, CATEGORY,PRICE,SHELF_NO,PRODUCT_ID,QUANTITY) values('Potato','Grocery',80,2,9,78)
+into products (PRODUCT_NAME, CATEGORY,PRICE,SHELF_NO,PRODUCT_ID,QUANTITY) values('Onion','Grocery',60,2,10,63)
+into products (PRODUCT_NAME, CATEGORY,PRICE,SHELF_NO,PRODUCT_ID,QUANTITY) values('Red-spice','Grocery',35,2,11,40)
+into products (PRODUCT_NAME, CATEGORY,PRICE,SHELF_NO,PRODUCT_ID,QUANTITY) values('Black-spice','Grocery',35,2,12,40)
+into products (PRODUCT_NAME, CATEGORY,PRICE,SHELF_NO,PRODUCT_ID,QUANTITY) values('Dairy Milk','Confectionary',10,3,13,400)
+into products (PRODUCT_NAME, CATEGORY,PRICE,SHELF_NO,PRODUCT_ID,QUANTITY) values('Cloud-9','Confectionary',10,3,14,500)
+into products (PRODUCT_NAME, CATEGORY,PRICE,SHELF_NO,PRODUCT_ID,QUANTITY) values('Bake Time Cake','Confectionary'25,3,15,200)
+into products (PRODUCT_NAME, CATEGORY,PRICE,SHELF_NO,PRODUCT_ID,QUANTITY) values('Cup-Cake','Confectionary',10,3,16,450)
+into products (PRODUCT_NAME, CATEGORY,PRICE,SHELF_NO,PRODUCT_ID,QUANTITY) values('Flow','Confectionary',10,3,17,150)
+into products (PRODUCT_NAME, CATEGORY,PRICE,SHELF_NO,PRODUCT_ID,QUANTITY) values('Bonus','Cleaner',20,4,18,890)
+into products (PRODUCT_NAME, CATEGORY,PRICE,SHELF_NO,PRODUCT_ID,QUANTITY) values('Harpic','Cleaner',190,4,19,45)
+into products (PRODUCT_NAME, CATEGORY,PRICE,SHELF_NO,PRODUCT_ID,QUANTITY) values('Arial','Cleaner',10,4,20,78)
+into products (PRODUCT_NAME, CATEGORY,PRICE,SHELF_NO,PRODUCT_ID,QUANTITY) values('Surf Excel','Cleaner',10,4,21,234)
+into products (PRODUCT_NAME, CATEGORY,PRICE,SHELF_NO,PRODUCT_ID,QUANTITY) values('Max','Cleaner',100,4,22,230)
+into products (PRODUCT_NAME, CATEGORY,PRICE,SHELF_NO,PRODUCT_ID,QUANTITY) values('Vim','Cleaner',120,4,23,300)
+into products (PRODUCT_NAME, CATEGORY,PRICE,SHELF_NO,PRODUCT_ID,QUANTITY) values('Oil','Daily Usage',140,5,24,78)
+into products (PRODUCT_NAME, CATEGORY,PRICE,SHELF_NO,PRODUCT_ID,QUANTITY) values('Ghee','Daily Usage',45,5,25,90)
+into products (PRODUCT_NAME, CATEGORY,PRICE,SHELF_NO,PRODUCT_ID,QUANTITY) values('Rice','Daily Usage',100,5,26,100)
+into products (PRODUCT_NAME, CATEGORY,PRICE,SHELF_NO,PRODUCT_ID,QUANTITY) values('Flour','Daily Usage',70,5,27,12)
+into products (PRODUCT_NAME, CATEGORY,PRICE,SHELF_NO,PRODUCT_ID,QUANTITY) values('7up','Beverages',60,6,28,90)
+into products (PRODUCT_NAME, CATEGORY,PRICE,SHELF_NO,PRODUCT_ID,QUANTITY) values('Coca-cola','Beverages',60,6,29,39)
+into products (PRODUCT_NAME, CATEGORY,PRICE,SHELF_NO,PRODUCT_ID,QUANTITY) values('Pepsi','Beverages',60,6,30,98)
+into products (PRODUCT_NAME, CATEGORY,PRICE,SHELF_NO,PRODUCT_ID,QUANTITY) values('Fanta','Beverages',60,6,31,67)
+into products (PRODUCT_NAME, CATEGORY,PRICE,SHELF_NO,PRODUCT_ID,QUANTITY) values('Dew','Beverages',60,6,32,6)
+select * from dual;
+
+
+
+<---Employees_shop--->
+insert all
+into employees_shop (EMPLOYEE_ID, FIRST_NAME, LAST_NAME, PHONE_#, SALARY, ADDRESS) values(12, 'Ali','Shaikh',0300-0987456,12000 ,'123-Hyderabad')
+into employees_shop (EMPLOYEE_ID, FIRST_NAME, LAST_NAME, PHONE_#, SALARY, ADDRESS) values(14, 'Rafique','Shahid',0310-7460456,11000 ,'1203,Hyderabad')
+into employees_shop (EMPLOYEE_ID, FIRST_NAME, LAST_NAME, PHONE_#, SALARY, ADDRESS) values(16, 'Imran','Qureshi',0345-9085456,6890 ,'1453-Hyderabad')
+into employees_shop (EMPLOYEE_ID, FIRST_NAME, LAST_NAME, PHONE_#, SALARY, ADDRESS) values(18, 'Sadaat','jatoi',0306-1257356,4000 ,'783-Hyderabad')
+into employees_shop (EMPLOYEE_ID, FIRST_NAME, LAST_NAME, PHONE_#, SALARY, ADDRESS) values(20, 'Sarib','Khan',0312-0947856,10000 ,'673-Hyderabad')
+select * from dual;
+
+<---shelf_shop--->
+
+insert all
+into shelf_shop (SHELF_NO, PRODUCT_ID) values(1,1)
+into shelf_shop (SHELF_NO, PRODUCT_ID) values(1,2)
+into shelf_shop (SHELF_NO, PRODUCT_ID) values(1,3)
+into shelf_shop (SHELF_NO, PRODUCT_ID) values(1,4)
+into shelf_shop (SHELF_NO, PRODUCT_ID) values(1,5)
+into shelf_shop (SHELF_NO, PRODUCT_ID) values(1,6)
+into shelf_shop (SHELF_NO, PRODUCT_ID) values(1,7)
+into shelf_shop (SHELF_NO, PRODUCT_ID) values(2,8)
+into shelf_shop (SHELF_NO, PRODUCT_ID) values(2,9)
+into shelf_shop (SHELF_NO, PRODUCT_ID) values(2,10)
+into shelf_shop (SHELF_NO, PRODUCT_ID) values(2,11)
+into shelf_shop (SHELF_NO, PRODUCT_ID) values(2,12)
+into shelf_shop (SHELF_NO, PRODUCT_ID) values(3,13)
+into shelf_shop (SHELF_NO, PRODUCT_ID) values(3,14)
+into shelf_shop (SHELF_NO, PRODUCT_ID) values(3,15)
+into shelf_shop (SHELF_NO, PRODUCT_ID) values(3,16)
+into shelf_shop (SHELF_NO, PRODUCT_ID) values(3,17)
+into shelf_shop (SHELF_NO, PRODUCT_ID) values(4,18)
+into shelf_shop (SHELF_NO, PRODUCT_ID) values(4,19)
+into shelf_shop (SHELF_NO, PRODUCT_ID) values(4,20)
+into shelf_shop (SHELF_NO, PRODUCT_ID) values(4,21)
+into shelf_shop (SHELF_NO, PRODUCT_ID) values(4,22)
+into shelf_shop (SHELF_NO, PRODUCT_ID) values(4,23)
+into shelf_shop (SHELF_NO, PRODUCT_ID) values(5,24)
+into shelf_shop (SHELF_NO, PRODUCT_ID) values(5,25)
+into shelf_shop (SHELF_NO, PRODUCT_ID) values(5,26)
+into shelf_shop (SHELF_NO, PRODUCT_ID) values(5,27)
+into shelf_shop (SHELF_NO, PRODUCT_ID) values(6,28)
+into shelf_shop (SHELF_NO, PRODUCT_ID) values(6,29)
+into shelf_shop (SHELF_NO, PRODUCT_ID) values(6,20)
+into shelf_shop (SHELF_NO, PRODUCT_ID) values(6,31)
+into shelf_shop (SHELF_NO, PRODUCT_ID) values(6,32)
+select * from dual;
+
+
+<---Receipts--->
+insert all
+into RECEIPTS (RECEIPT_ID, CUSTOMER_NAME,PRODUCT_NAME,QUANTITY,TOTAL_PRICE,Purchased_Date) values(123, 'Fawad', 'Arial',3, 30, '21-jan-05')
+into RECEIPTS (RECEIPT_ID, CUSTOMER_NAME,PRODUCT_NAME,QUANTITY,TOTAL_PRICE,Purchased_Date) values(400, 'Rana', 'colgate',2, 300, '21-jan-05')
+into RECEIPTS (RECEIPT_ID, CUSTOMER_NAME,PRODUCT_NAME,QUANTITY,TOTAL_PRICE,Purchased_Date) values(200, 'Khan', 'Flour',3, 210, '21-jan-05')
+into RECEIPTS (RECEIPT_ID, CUSTOMER_NAME,PRODUCT_NAME,QUANTITY,TOTAL_PRICE,Purchased_Date) values(300, 'Iman', 'Oil',1, 140, '21-jan-05')
+into RECEIPTS (RECEIPT_ID, CUSTOMER_NAME,PRODUCT_NAME,QUANTITY,TOTAL_PRICE,Purchased_Date) values(145, 'Zakir', 'Pepsi',1, 60, '21-jan-05')
+select * from dual;

@@ -1,0 +1,145 @@
+1
+select e.last_name,d.department_name,e.salary from departments d,employees e
+where e.department_id=d.department_id
+and d.location_id=1700
+and e.salary=e.commission_pct
+2
+select e.last_name,e.salary,d.department_id,avg(e.salary) average_of_department
+from departments d, employees e
+group by e.last_name,e.salary,d.department_id
+having avg(e.salary) in (select avg(e.salary) from departments d,employees e group by d.department_name)
+3
+select e.employee_id,e.last_name,d.department_name from departments d,employees e where d.department_name in (select department_name from departments) 
+4
+select d.department_id,min(e.salary) lowest_salary from departments d, employees e
+group by d.department_id,d.department_name
+having max(e.salary) > (select avg(salary) from employees)
+5
+select last_name,department_id,hire_date anniversary_overview from employees order by hire_date
+6
+eroor occured
+7
+select job_id,department_id,manager_Id from employees 
+group by department_id,job_id,manager_id
+8.1
+select employee_id,hire_date,salary,manager_id from employees
+where employee_id < 125
+8.2
+create table SPECIAL_SAL
+(
+employee_id number(4),
+salary number(10)
+);
+insert into SPECIAL_SAL
+(select employee_id,salary from employees where salary > 20000)
+8.3
+create table SAL_HISTORY
+(
+employee_id number(4),
+hire_date date,
+salary number(10)
+);
+insert into SAL_HISTORY
+(select employee_id,hire_date,salary from employees)
+8.4
+create table MGR_HISTORY
+(
+employee_id number(4),
+manager_id number(10),
+hire_date date
+);
+insert into MGR_HISTORY
+(select employee_id,manager_id,hire_date from employees)
+9
+select department_id from employees where hire_date like '2006'
+10
+select count (*) total,
+sum (decode(to_char(hire_date, 'YYYY'),1980,1,0))"1980",
+sum (decode(to_char(hire_date, 'YYYY'),1981,1,0))"1981",
+sum (decode(to_char(hire_date, 'YYYY'),1982,1,0))"1982",
+sum (decode(to_char(hire_date, 'YYYY'),1983,1,0))"1987"
+from employees;
+11
+select job_id from employees where hire_date >  '31-DEC-1981'
+12
+create table Purchase_order
+(
+customer_number number(10),
+order_date date,
+ship_date date
+);
+create index idx1 on Purchase_order(c_no);
+13
+create table Stock_Item
+(
+stock_item_number number(10),
+description varchar2(100),
+price number(10)
+);
+create index idx2 on Purchase_order(s_no);
+14
+select count(e.manager_id),count(e.employee_id) from employees e 
+having e.employee_id=e.manager_id 
+group by e.employee_id,e.manager_id
+order by e.manager_id 
+15
+select count(employee_id) employees,count(e.manager_id) number_of_managers from employees e
+group by e.job_id,manager_id,employee_id
+having e.manager_id<>e.employee_id
+16
+select e.manager_id,e.salary,min(e.salary)
+from employees e
+group by e.manager_id,e.employee_id,e.salary
+having e.employee_id=e.manager_id
+and e.manager_id is not null
+and min(e.salary)>6
+order by e.salary desc
+17
+create table customer
+(
+customer number(10),
+customer_name varchar2(30),
+zip_code number(10)
+);
+create view cus_vu
+as select customer ,customer_name,zip_code as postal_code from customer
+18
+select employee_id,last_name,department_id from employees
+where salary in (select e.manager_id from employees e) 
+19
+create table orders
+(
+ord_no number(4),
+purch_amt number(10),
+ord_date date,
+customer_id number(4),
+salesman_id number(4)
+);
+create table customers
+(
+customer_id number(4),
+cust_name varchar2(30),
+city varchar2(30),
+price number(10),
+salesman_id number(4)
+);
+create view vu
+as select count(o.customer_id) NOC,count(o.salesman_id) OSA,avg(o.purch_amt) AAOO,count(o.ord_date) AOOD from orders o
+20
+select e.last_name from employees e join employees es
+on e.employee_id=es.manager_id 
+where e.manager_id = 146
+21
+select last_name from employees where job_id = (select job_id from employees where job_id='Oxford')
+22
+select e.last_name,d.department_name,l.city
+from employees e,departments d,locations l
+23
+select department_id,department_name from departments
+where department_id>5
+24
+select e.manager_id,count(e.manager_id) from employees e,employees es
+group by e.employee_id,es.manager_id,e.manager_id
+having e.employee_id=es.manager_id
+25
+select instr('sahil','a') from dual

@@ -1,0 +1,186 @@
+-----------Marts--------------
+create table ali_mart(
+mart_id number(20) not null primary key,
+mar_name varchar2(30) not null,
+address varchar2(30)
+);
+
+create table grocers_mart(
+mart_id number(20) not null primary key,
+mar_name varchar2(30) not null,
+address varchar2(30)
+);
+
+
+create table max_bachat_mart(
+mart_id number(20) not null primary key,
+mar_name varchar2(30) not null,
+address varchar2(30)
+);
+
+create table abdullah_mart(
+mart_id number(20) not null primary key,
+mar_name varchar2(30) not null,
+address varchar2(30)
+);
+
+create table dawood_mart(
+mart_id number(20) not null primary key,
+mar_name varchar2(30) not null,
+address varchar2(30)
+);
+
+---------------products-----------------
+create table ali_products(
+product_name varchar2(20) not null,
+product_id number(20) primary key,
+price number(5),
+stock number(25),
+category varchar2(25),
+quainty_sale number(25),
+mart_id number(20)
+);
+
+
+create table max_bachat_products(
+product_name varchar2(20) not null,
+product_id number(20) primary key,
+price number(5),
+stock number(25),
+category varchar2(25),
+quainty_sale number(25),
+mart_id number(20)
+);
+
+
+create table grocers_products(
+product_name varchar2(20) not null,
+product_id number(20) primary key,
+price number(5),
+stock number(25),
+category varchar2(25),
+quainty_sale number(25),
+mart_id number(20)
+);
+
+
+create table dawood_products(
+product_name varchar2(20) not null,
+product_id number(20) primary key,
+price number(5),
+stock number(25),
+category varchar2(25),
+quainty_sale number(25),
+mart_id number(20)
+);
+
+create table abdullah_products(
+product_name varchar2(20) not null,
+product_id number(20) primary key,
+price number(5),
+stock number(25),
+category varchar2(25),
+quainty_sale number(25),
+mart_id number(20)
+);
+
+
+--------adding foreign key------------
+alter table ali_products
+add foreign key (mart_id) references ali_mart(mart_id);
+
+alter table grocers_products
+add foreign key (mart_id) references grocers_mart(mart_id);
+
+alter table max_bachat_products
+add foreign key (mart_id) references max_bachat_mart(mart_id);
+
+alter table abdullah_products
+add foreign key (mart_id) references abdullah_mart(mart_id);
+
+alter table dawood_products
+add foreign key (mart_id) references dawood_mart(mart_id);
+
+------------vendors-----------------
+
+create table vendors_ali(
+vendor_id number(3) primary key,
+vendor_name varchar2(20),
+mart_id number(3),
+mart_name varchar2(30),
+retail_price number(20),
+delivery_date date
+);
+
+create table vendors_grocers(
+vendor_id number(3) primary key,
+vendor_name varchar2(20),
+mart_id number(3),
+mart_name varchar2(30),
+retail_price number(20),
+delivery_date date
+);
+
+create table vendors_dawood(
+vendor_id number(3) primary key,
+vendor_name varchar2(20),
+mart_id number(3),
+mart_name varchar2(30),
+retail_price number(20),
+delivery_date date
+);
+
+create table vendors_abdullah(
+vendor_id number(3) primary key,
+vendor_name varchar2(20),
+mart_id number(3),
+mart_name varchar2(30),
+retail_price number(20),
+delivery_date date
+);
+
+create table vendors_max_bachat(
+vendor_id number(3) primary key,
+vendor_name varchar2(20),
+mart_id number(3),
+mart_name varchar2(30),
+retail_price number(20),
+delivery_date date
+);
+
+--------adding foreign key------------
+alter table vendors_ali
+add foreign key (mart_id) references ali_mart(mart_id);
+
+alter table vendors_grocers
+add foreign key (mart_id) references grocers_mart(mart_id);
+
+alter table vendors_dawood
+add foreign key (mart_id) references  dawood_mart(mart_id);
+
+alter table vendors_abdullah
+add foreign key (mart_id) references abdullah_mart(mart_id);
+
+alter table vendors_max_bachat
+add foreign key (mart_id) references  max_bachat_mart(mart_id);
+
+--------------insert--------------
+insert all
+into ali_mart values(1,'Ali Mart','Qasimabad,Hyderabad')
+select * from dual;
+
+insert all
+into grocers_mart values(2,'Grocers Mart','City,Hyderabad')
+select * from dual;
+
+insert all
+into dawood_mart values(3,'Dawood Mart','Latifabad,Hyderabad')
+select * from dual;
+
+insert all
+into abdullah_mart values(4,'Abdullah Mart','Qasimabad,Hyderabad')
+select * from dual;
+
+insert all
+into max_bachat_mart values(5,'Max Bachat Mart','City,Hyderabad')
+select * from dual;

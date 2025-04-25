@@ -1,0 +1,78 @@
+set serveroutput on
+set verify on
+declare
+increment INT :=1;
+emp_name varchar(20); 
+limit int :=&limit;
+begin
+DBMS_output.put_line('Printing Employees Upto: '||limit);
+LOOP
+Select last_name into emp_name from employees where employee_id=increment+100;
+DBMS_output.put_line(increment+100||' ~'||emp_name);
+increment:=increment+1;
+exit when increment > limit;
+end loop;
+end;
+
+set serveroutput on
+set verify off
+declare
+input_string varchar(50) :='&input_string';
+reverse_string varchar(50);
+length_of_string number :=length(input_string);
+begin
+LOOP
+reverse_string:=reverse_String|| substr(input_String, length_of_string,1);
+length_of_string:=length_of_string-1;
+exit when length_of_string<1;
+end loop;
+DBMS_output.put_line('Input was: '||input_string);
+DBMS_output.put_line('result is : '||reverse_string );
+end;
+
+set serveroutput on
+set verify off
+--block 1
+declare
+emp_id employees.employee_id%type := &COLUMN_NAME;
+output_var varchar2(256);
+begin 
+DBMS_OUTPUT.PUT_LINE('INSIDE BLOCK_1');
+output_var := output_Var || 'emp_id: '||emp_id||',';
+DBMS_OUTPUT.PUT_LINE(output_var);
+--block 2
+declare
+var_salary employees.salary%type;
+begin
+DBMS_OUTPUT.PUT_LINE('INSIDE_BLOCK 2');
+select salary into var_salary from employees where employee_id=emp_id;
+output_var := output_Var || 'HIS SALARY: '||var_salary||',';
+DBMS_OUTPUT.PUT_LINE(output_var);
+--block 3
+declare
+var_dpt departments.department_name%type;
+begin
+DBMS_OUTPUT.PUT_LINE('INSIDE_BLOCK 3');
+select department_name into var_dpt from departments where department_id=(select department_id from employees where employee_id=emp_id);
+output_var := output_Var || 'WORKS IN DPT: '||var_dpt||',';
+DBMS_OUTPUT.PUT_LINE(output_var);
+--block 4
+declare
+var_jobs_count employees.job_id%type;
+begin
+DBMS_OUTPUT.PUT_LINE('INSIDE_BLOCK 4');
+select distinct count(job_id) into var_jobs_count from employees where employee_id=emp_id;
+output_var := output_Var || 'WORKED+ WORKS IN DEPT: '||emp_id||',';
+DBMS_OUTPUT.PUT_LINE(output_var);
+DBMS_OUTPUT.PUT_LINE('INSIDE_BLOCK 5');
+end;
+DBMS_OUTPUT.PUT_LINE('INSIDE_BLOCK 6');
+DBMS_OUTPUT.PUT_LINE(output_var);
+end;
+DBMS_OUTPUT.PUT_LINE('INSIDE_BLOCK 7');
+DBMS_OUTPUT.PUT_LINE(output_var);
+end;
+DBMS_OUTPUT.PUT_LINE('-----------------------------------------------------');
+DBMS_OUTPUT.PUT_LINE(output_var);
+DBMS_OUTPUT.PUT_LINE('ENDS_BLOCK 1');
+end;
