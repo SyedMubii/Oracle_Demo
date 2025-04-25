@@ -1,0 +1,260 @@
+BRANCH 1
+1
+
+create table BRANCH1
+(
+BRANCHNO NUMBER(1),
+BRANCH_NAME VARCHAR2(30) NOT NULL,
+CONSTRAINT BRANCH_BRANCHNO_PK
+           PRIMARY KEY (BRANCHNO)
+);
+
+2
+
+ALTER TABLE BRANCH1
+ADD  (EMAILID VARCHAR2(25);
+ALTER TABLE BRANCH1
+ADD  CONSTRAINT BR_UN_EMAIL UNIQUE (EMAILID);
+
+3
+
+ALTER TABLE 
+BRANCH1 RENAME TO 
+BRANCH_INFO;
+
+4
+
+ALTER TABLE BRANCH_INFO
+DROP COLUMN EMAILID
+
+2 STUDENT 
+1
+CREATE TABLE STUDENT1
+(
+NAME VARCHAR2(30) NOT NULL,
+REGISTERNO NUMBER(11),
+BRANCHNO NUMBER(1),
+SEC VARCHAR2(1) NOT NULL,
+JOINDATE DATE NOT NULL,
+MARK NUMBER(5,2) NOT NULL,
+CONSTRAINT ST_REG_PK PRIMARY KEY(REGISTERNO),
+ CONSTRAINT ST_BR_FK FOREIGN KEY (BRANCHNO)
+ REFERENCES BRANCH_INFO(BRANCHNO));
+
+2
+ALTER TABLE STUDENT1
+ADD  (EMAILID VARCHAR2(25);
+
+ALTER TABLE STUDENT1
+ADD  CONSTRAINT ST_UN_EMAIL UNIQUE (EMAILID);
+3
+ALTER TABLE STUDENT1
+MODIFY  NAME  VARCHAR2(25);
+
+4
+ALTER TABLE 
+STUDENT1 RENAME TO 
+STUDENT_INFO
+
+5
+ALTER TABLE STUDENT_INFO
+DROP COLUMN EMAILID
+
+3
+1
+CREATE TABLE MARKGRADE
+(
+GRADE VARCHAR2(1) NOT NULL,
+LOWMARK NUMBER(5,2) NOT NULL,
+HIGHMARK NUMBER(5,2) NOT NULL
+);
+2
+ALTER TABLE STUDENT_INFO
+ADD  (STUDENT_NAME VARCHAR2(30));
+3
+ALTER TABLE STUDENT_INFO
+MODIFY  STUDENT_NAME  VARCHAR2(25);
+4
+ALTER TABLE 
+MARKGRADE RENAME TO 
+MARKGRADE_STUDENT;
+
+4-1
+CREATE TABLE PROJECT
+(
+pno	number(3),
+pname varchar2(60),	
+pmgr number(4) Not Null,
+persons number(3),
+budjet number(8,2),
+pstart date Not Null,
+pend date,
+constraint pro_pno_pk primary key (pno)	
+);
+5-1
+insert all 
+into branch_info (branchno,branch_name)
+values (1,'Civil')
+into branch_info (branchno,branch_name)
+values (2,'Computer Science')
+into branch_info (branchno,branch_name)
+values (3,'Electrical')
+into branch_info (branchno,branch_name)
+values (4,'Electronics')
+into branch_info (branchno,branch_name)
+values (5,'Information  Technology')
+into branch_info (branchno,branch_name)
+values (6,'Instrumentation')
+into branch_info (branchno,branch_name)
+values (7,'Mechanical')
+into branch_info (branchno,branch_name)
+values (8,	'MBA')
+into branch_info (branchno,branch_name)
+values (9,'MCA')
+select * from dual;
+
+6-1
+
+insert all
+into student_info 
+(name,registerno,branchno,sec,joindate,mark)
+values
+('ADITYA KUMAR',11305104001,2,'A','24-JUL-2005',99)
+into student_info 
+(name,registerno,branchno,sec,joindate,mark)
+values
+('NANDA KUMARAN',11305104061,2,'B','30-MAY-2005',80)
+into student_info 
+(name,registerno,branchno,sec,joindate,mark)
+values
+('AASHA RANI',11308104001,2,'A','02-AUG-2008',99)
+into student_info 
+(name,registerno,branchno,sec,joindate,mark)
+values
+('MANDYAM HARIKA',11308106061,4,'B','04-AUG-2008',75)
+into student_info 
+(name,registerno,branchno,sec,joindate,mark)
+values
+('ABDUL SAMAD',11308205001,5,'A','02-AUG-2008',100)
+into student_info 
+(name,registerno,branchno,sec,joindate,mark)
+values
+('PRIYA DHARSHINI',11308205062,5,'B','18-SEP-2008',90)
+into student_info 
+(name,registerno,branchno,sec,joindate,mark)
+values
+('AISHWARYA',11308103001,1,'A','09-AUG-2008',78)
+into student_info 
+(name,registerno,branchno,sec,joindate,mark)
+values
+('RAMMANOHAR',11308103030,1,'A','01-AUG-2008',65)
+into student_info 
+(name,registerno,branchno,sec,joindate,mark)
+values
+('AHAMED THAHA'	,11308114001,7,'A','25-JUL-2008',90)
+into student_info 
+(name,registerno,branchno,sec,joindate,mark)
+values
+('PRAVEEN',11308114025,'A',7,'28-JUL-2008',	75)
+into student_info 
+(name,registerno,branchno,sec,joindate,mark)
+values
+('ABINAYA',11308105001,'A',3,'01-AUG-2008',90)
+into student_info 
+(name,registerno,branchno,sec,joindate,mark)
+values
+('ANISH KUMAR',11308107001,'A',6,'26-JUL-2008',90)
+into student_info 
+(name,registerno,branchno,sec,joindate,mark)
+values
+('KANIMOZHI',11308107027,'A',6,'06-AUG-2008',80)
+into student_info 
+(name,registerno,branchno,sec,joindate,mark)
+values
+('MADHU USOODHANA',11308105023,'A',3,'28-JUL-2008',90)
+select * from dual;
+
+7
+select * from student_info;
+8
+select * from branch_info;
+
+9
+
+create table emp1
+(
+ empno number(7),
+ ename varchar2(7),
+ job varchar2(20),
+ mgr number (7),
+ hire_date date,
+ sal number(20),
+ comm number(10),
+ deptno number (20) );
+
+DATA
+insert into emp1
+(empno,ename,job,mgr,hire_date,sal,comm,deptno)
+values
+(7369,'SMITH','CLERK',7902,'13-JUN-1993',800,0.00,20)
+insert into emp1
+(empno,ename,job,mgr,hire_date,sal,comm,deptno)
+values
+(7499,'ALLEN','SALESMAN',7698,'15-AUG-1998',1600.00,300.00,30);
+insert into emp1
+(empno,ename,job,mgr,hire_date,sal,comm,deptno)
+values
+(7521,'WARD','SALESMAN',7698,'26-MAR-1996',1250.0,500.00,30);
+insert into emp1
+(empno,ename,job,mgr,hire_date,sal,comm,deptno)
+values
+(7566,'JONES','MANAGER',7839,'31-OCT-1995',2975.00,NULL,20);
+insert into emp1
+(empno,ename,job,mgr,hire_date,sal,comm,deptno)
+values
+(7698,'BLAKE','MANAGER',7839,'11-JUN-1992',2850.00,NULL,30);
+insert into emp1
+(empno,ename,job,mgr,hire_date,sal,comm,deptno)
+values
+(7788,'SCOTT','ANALYST',7566,'05-MAR-1996',3000.00,NULL,20);
+insert into emp1
+(empno,ename,job,mgr,hire_date,sal,comm,deptno)
+values
+(7839,'KING','PRESIDENT',NULL,'09-JUN-1996',5000.00,0.00,10);
+insert into emp1
+(empno,ename,job,mgr,hire_date,sal,comm,deptno)
+values
+(7844,'TURNER','SALESMAN',7698,'04-JUN-1995',1500.00,0.00,30);
+insert into emp1
+(empno,ename,job,mgr,hire_date,sal,comm,deptno)
+values(7876,'ADAMS','CLERK',7788,'04-JUN-1999',1100.00,NULL,20);
+insert into emp1
+(empno,ename,job,mgr,hire_date,sal,comm,deptno)
+values(7900,'JAMES','CLERK',7698,'23-JUN-2000',950.00,NULL,30);
+insert into emp1
+(empno,ename,job,mgr,hire_date,sal,comm,deptno)
+values(7934,'MILLER','CLERK',7782,'21-JAN-2000',1300.00,NULL,10);
+insert into emp1
+(empno,ename,job,mgr,hire_date,sal,comm,deptno)
+values(7902,'FORD	','ANALYST',7566,'05-DEC-1997',3000.00,NULL,20);
+insert into emp1
+(empno,ename,job,mgr,hire_date,sal,comm,deptno)
+values(7654,'MARTIN','SALESMAN',7698,'05-DEC-1998',1250.00,1400.00,30);
+
+10
+update emp1 
+set sal=1500
+where ename='SCOTT'
+
+11
+UPDATE EMP1 
+SET SAL=15000
+WHERE JOB='CLERK'
+
+12
+SELECT ENAME,JOB
+FROM EMP1;
+
+13
+DELETE FROM EMP1
+WHERE JOB = 'PRESIDENT';
